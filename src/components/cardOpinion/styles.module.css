@@ -1,0 +1,8 @@
+.displayPicture {
+  border-radius: 120px;
+}
+.cardContainer {
+  width: 339px;
+  height: 437px;
+  flex-shrink: 0;
+}

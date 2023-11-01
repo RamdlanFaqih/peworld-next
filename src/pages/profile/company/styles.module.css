@@ -1,0 +1,85 @@
+.bodyContainer {
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  background-color: #f6f7f8;
+  height: 100vh;
+}
+
+.company {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.field {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.residence {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.description {
+  max-width: 614px;
+  margin-top: 20px;
+}
+
+.buttonEditProfile {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .bodyContainer {
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+
+  .company {
+      font-size: 18px;
+      margin-top: 15px;
+  }
+
+  .field, .residence {
+      font-size: 12px;
+      margin-top: 8px;
+  }
+
+  .description {
+      max-width: 100%;
+      font-size: 14px;
+      margin-top: 15px;
+  }
+
+  .buttonEditProfile {
+      margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bodyContainer {
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+
+  .company {
+      font-size: 16px;
+      margin-top: 10px;
+  }
+
+  .field, .residence {
+      font-size: 10px;
+      margin-top: 6px;
+  }
+
+  .description {
+      max-width: 100%;
+      font-size: 12px;
+      margin-top: 10px;
+  }
+
+  .buttonEditProfile {
+      margin-top: 10px;
+  }
+}

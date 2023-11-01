@@ -1,0 +1,39 @@
+.image {
+    width: '219px';
+    height: '148px';
+    object-fit: "cover"
+}
+
+.portofolio {
+    font-size: 14px;
+    color: #1F2A36;
+    margin-top: 8px;
+}
+
+.hire {
+    height: 50px;
+}
+
+.role {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.company {
+    font-size: 18px;
+    font-weight: 400;
+    color: #46505C;
+}
+
+.date {
+    font-size: 16px;
+    font-weight: 400;
+    color: #9EA0A5;
+}
+
+.description {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9EA0A5;
+}

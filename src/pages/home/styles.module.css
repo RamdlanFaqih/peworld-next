@@ -1,0 +1,144 @@
+.topJobs {
+  padding-left: 150px;
+  padding-right: 150px;
+  background-color: #5e50a1;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.topJobsText {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bodyContainer {
+  height: 100vh;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  background-color: #F6F7F8;
+}
+
+.icSearch {
+  margin-right: 25px;
+}
+
+.sort {
+  border-left: 1px solid #9ea0a5;
+  padding: 19px 25px;
+}
+
+.profile {
+  background-color: #fff;
+  margin-top: 50px;
+  min-height: 100%; /* Menggunakan min-height untuk memanjangkan vertikal */
+  display: flex;
+  flex-direction: column; /* Menggunakan flex-direction: column agar konten tata letak vertikal */
+}
+
+.profileRows {
+    height: 200px;
+    background-color: #fff;
+}
+
+.roundedImage {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.name {
+    font-size: 22px;
+    color: #1F2A36;
+    font-weight: 600;
+}
+
+.job,
+.location {
+    font-size: 14px;
+    color: #9EA0A5;
+    font-weight: 400;
+}
+
+.skillsContainer {
+    margin-top: 17px;
+}
+
+.skillsBox {
+    background-color: rgba(251, 176, 23, 0.60);
+    display: inline-block; 
+    padding: 4px 24px;
+    border: 1px solid #FBB017;
+    border-radius: 4px;
+}
+
+.skills {
+    color: #fff;
+}
+
+.pagination {
+    height: 58px;
+}
+
+.buttonPagination {
+    width: 57px;
+    height: 58px;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .topJobs {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .bodyContainer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .icSearch {
+    margin-right: 10px;
+  }
+
+  .sort {
+    padding: 15px 20px;
+  }
+
+  .profile {
+    margin-top: 30px;
+  }
+  .skillsBox {
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 425px) {
+  .topJobs {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .bodyContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .icSearch {
+    margin-right: 5px;
+  }
+
+  .sort {
+    padding: 10px 15px;
+  }
+
+  .profile {
+    margin-top: 20px;
+  }
+
+  .skillsBox {
+    padding: 4px 6px;
+  }
+}

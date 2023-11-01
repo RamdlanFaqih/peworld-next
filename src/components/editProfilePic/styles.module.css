@@ -1,0 +1,18 @@
+.modal-container {
+    z-index: 50;
+  }
+  
+  .modal-overlay {
+    z-index: 40;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* ... definisikan aturan CSS lainnya ... */
+  

@@ -1,0 +1,82 @@
+.bodyContainer {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    background-color: #f6f7f8;
+  }
+  
+  .imageContainer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .roundedImage {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+  }
+  .name {
+    font-size: 22px;
+    color: #1f2a36;
+    font-weight: 600;
+  }
+  
+  .job {
+    margin-top: 6px;
+  }
+  
+  .job,
+  .location {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .location {
+    margin-top: 13px;
+    color: #9EA0A5;
+  }
+  
+  .workCategory {
+    color: #9EA0A5;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 13px;
+  }
+  
+  .aboutProfile {
+    color: #9EA0A5;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 18px;
+  }
+  
+  .hire {
+    margin-top: 38px;
+  }
+  
+  .gmail, .instagram, .github, .gitlab {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9EA0A5;
+    margin-bottom: 16px;
+  }
+  
+  
+  /* Hire Page */
+  .hireTitle {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1F2A36;
+  }
+  
+  .hireDescription {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .formHire {
+    margin-top: 52px;
+  }
+  
+  

@@ -1,0 +1,11 @@
+.skillsBox {
+    background-color: rgba(251, 176, 23, 0.60);
+    display: inline-block; 
+    padding: 4px 24px;
+    border: 1px solid #FBB017;
+    border-radius: 4px;
+}
+
+.skills {
+    color: #fff;
+}

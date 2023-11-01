@@ -1,0 +1,111 @@
+.row {
+  margin-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.tagline {
+  font-size: 2.75em;
+}
+
+.description {
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 55px;
+  width: 210px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+}
+
+.secondRow {
+  margin-top: 180px;
+  margin-bottom: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.tickIcon {
+  background-color: #fbb017;
+  color: white;
+  padding: 2px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.tickItem {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.titleOpinionContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.titleOpinion {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.gmail {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ea0a5;
+  margin-bottom: 27px;
+}
+
+@media (max-width: 767px) {
+  .row {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .tagline {
+    font-size: 2em;
+  }
+
+  .description {
+    margin-top: 10px;
+  }
+
+  .button {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .secondRow {
+    margin-top: 80px;
+    margin-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .tickIcon {
+    padding: 1px;
+    margin-right: 3px;
+  }
+
+  .titleOpinion {
+    font-size: 28px;
+  }
+
+  .gmail {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+}
