@@ -43,13 +43,6 @@ Peworld is a HireJob website aimed at connection job seekers and recruiters. You
 
 ## Usage
 
-(tambahkan untuk instalasi next js)
-
-## Screenshots
-
-## Related Project
-lengkapi bagian instalasi next js### Usage
-
 To run the Peworld website frontend locally, you'll need to have Node.js and npm (Node Package Manager) installed on your system. Follow these steps to install Next.js and other dependencies:
 
 1. **Install Node.js and npm:**
@@ -91,4 +84,7 @@ To run the Peworld website frontend locally, you'll need to have Node.js and npm
 
 Now, you have successfully installed Next.js and set up your Peworld website frontend project locally. You can start developing and customizing your website further based on your project requirements.
 
+## Screenshots
+
 ## Related Project
+
