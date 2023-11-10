@@ -48,24 +48,36 @@ To run the Peworld website frontend locally, you'll need to have Node.js and npm
 1. **Install Node.js and npm:**
    If you haven't already installed Node.js and npm, you can download and install them from the official [Node.js website](https://nodejs.org/).
 
-2. **Create a new Next.js app:**
-   Open your terminal or command prompt and run the following command to create a new Next.js app for your Peworld website:
+Certainly! If you want users to fork the Peworld website frontend repository before following the installation steps, you can include the fork step in your documentation. Here's how you can update the "Usage" section to include forking the repository:
+
+### Usage
+
+#### Forking the Peworld Frontend Repository
+
+1. **Fork the repository:**
+   First, fork the Peworld website frontend repository by visiting the following GitHub URL:
+   [https://github.com/RamdlanFaqih/peworld-next.git](https://github.com/RamdlanFaqih/peworld-next.git)
+
+   Click on the "Fork" button in the top right corner of the GitHub page. This will create a copy of the repository in your GitHub account.
+
+2. **Clone the forked repository:**
+   Once you have forked the repository, clone it to your local machine using the following command (replace `<your-username>` with your GitHub username):
 
    ```
-   npx create-next-app peworld-frontend
+   git clone https://github.com/<your-username>/peworld-next.git
    ```
 
-   This command will create a new Next.js app in a directory called `peworld`.
+   This command will clone the forked repository to your local system.
 
 3. **Navigate to the project directory:**
-   Change your current directory to the newly created Next.js app directory:
+   Change your current directory to the cloned repository:
 
    ```
-   cd peworld-frontend
+   cd peworld-next
    ```
 
 4. **Install project dependencies:**
-   Inside the `peworld-frontend` directory, install the project dependencies listed in the `package.json` file using npm:
+   Inside the `peworld-next` directory, install the project dependencies listed in the `package.json` file using npm:
 
    ```
    npm install
@@ -82,7 +94,7 @@ To run the Peworld website frontend locally, you'll need to have Node.js and npm
 
    This command will start the development server, and you can view your Peworld website frontend by visiting `http://localhost:3000` in your web browser.
 
-Now, you have successfully installed Next.js and set up your Peworld website frontend project locally. You can start developing and customizing your website further based on your project requirements.
+Congrlatulations, you can set up the Peworld website frontend for development.
 
 ## Screenshots
 
