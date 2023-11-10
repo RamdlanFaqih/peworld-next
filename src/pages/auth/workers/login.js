@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import React from "react";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,15 +39,15 @@ export default function Login() {
         workers
       );
       console.log("Login successful", response.data);
-      localStorage.setItem(
+      Cookies.set(
         "token",
-        JSON.stringify(response.data.generateToken)
+        (response.data.generateToken)
       );
-      localStorage.setItem(
+      Cookies.set(
         "workers_id",
         JSON.stringify(response.data.workers_id)
       );
-      localStorage.setItem(
+      Cookies.set(
         "role",
         JSON.stringify(response.data.role)
       )

@@ -5,6 +5,7 @@ import React from "react";
 import Styles from "../auth.module.css";
 import Button from "@/components/button/button";
 import {useRouter} from "next/router";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,15 +38,15 @@ export default function Login() {
         recruiters
       );
       console.log("Login successful", response.data);
-      localStorage.setItem(
+      Cookies.set(
         "token",
         JSON.stringify(response.data.generateToken)
       );
-      localStorage.setItem(
+      Cookies.set(
         "recruiters_id",
         JSON.stringify(response.data.recruiters_id)
       );
-      localStorage.setItem("role", JSON.stringify(response.data.role));
+      Cookies.set("role", JSON.stringify(response.data.role));
       setShowSuccesAlert(true);
       setTimeout(() => {
         setShowSuccesAlert(false);

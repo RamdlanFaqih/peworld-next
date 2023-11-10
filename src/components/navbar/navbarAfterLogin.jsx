@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import Button from "../button/button";
 import Styles from "./styles.module.css";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function NavbarAfterLogin() {
-  const userType = localStorage.getItem("role"); // Ambil jenis pengguna dari localStorage
+  const userType = Cookies.get("role"); // Ambil jenis pengguna dari Cookies
 
   let profileLink = "/profile/workers";
   if (userType === "0") {

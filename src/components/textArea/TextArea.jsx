@@ -2,12 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextArea = ({ label, placeholder, value, onChange }) => {
+const TextArea = ({ label, placeholder, value, onChange, name }) => {
   return (
     <div className="mb-2">
       <label className="font-semibold text-sm">{label}</label>
       <textarea
         placeholder={placeholder}
+        name={name}
         value={value}
         onChange={onChange}
         className="rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 resize-none w-full"
@@ -22,6 +23,7 @@ TextArea.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  name: PropTypes.string
 };
 
 export default TextArea;

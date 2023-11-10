@@ -8,6 +8,7 @@ import CardOpinion from "@/components/cardOpinion/cardOpinion";
 import Footer from "@/components/footer/footer";
 import NavbarAfterLogin from "@/components/navbar/navbarAfterLogin";
 import React from "react";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,7 @@ export default function LandingPage() {
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsLoggedIn(!!localStorage.getItem("token"));
+      setIsLoggedIn(!!Cookies.get("token"));
     }
   }, []);
   return (

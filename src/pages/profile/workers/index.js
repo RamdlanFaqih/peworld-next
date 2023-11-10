@@ -12,43 +12,52 @@ import { FiMapPin } from "react-icons/fi";
 import React from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function ProfileWorkers() {
   const router = useRouter();
   const [workersProfile, setWorkersProfile] = React.useState("");
+  const [skillProfile, setSkillProfile] = React.useState([]);
   const [userRole, setUserRole] = React.useState("");
+  const workers_id = Cookies.get("workers_id");
+  console.log(workers_id);
 
   React.useEffect(() => {
-    const workers_id = localStorage.getItem("workers_id");
-    console.log(workers_id);
-
     const getWorkers = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API}/workers/getData/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_CSR}/workers/skill/${workers_id}`
         );
-        console.log(response.data.data.rows[0]);
-        setWorkersProfile(response.data.data.rows[0]);
-        setUserRole(response.data.data.rows[0].role);
+        setWorkersProfile(response.data.rows[0]);
+        setUserRole(response.data.rows[0].workers_role);
+
+        const skill = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_CSR}/skill/workers/${workers_id}`
+        );
+        setSkillProfile(skill.data.data);
       } catch (error) {
         console.log("get workers failed", error);
       }
     };
     getWorkers();
   }, []);
+  console.log(skillProfile);
 
   const handleEditProfile = () => {
-    router.push("/profile/workers/editProfile");
+    router.push(`/profile/workers/${workers_id}`);
   };
 
-  const profileImage = workersProfile?.image || "/dummyProfile.png";
-  const profileName = workersProfile?.name || "Nama Pekerja";
-  const profileProfession = workersProfile?.profession || "Profesi";
-  const profileResidence = workersProfile?.residence || "Kota, Provinsi";
-  const workCategory = workersProfile?.work_category || "Kategori Pekerjaan";
-  const profileDescription = workersProfile?.workers_desc || "Deskripsi";
+  const profileImage = workersProfile?.workers_image || "/dummyProfile.png";
+  const profileName = workersProfile?.workers_name || "Nama Pekerja";
+  const profileProfession = workersProfile?.workers_profession || "Profesi";
+  const profileResidence =
+    workersProfile?.workers_residence || "Kota, Provinsi";
+  const workCategory =
+    workersProfile?.workers_work_category || "Kategori Pekerjaan";
+  const profileDescription =
+    workersProfile?.workers_workers_desc || "Deskripsi";
   return (
     <div>
       <div className={Styles.navbar}>
@@ -103,17 +112,24 @@ export default function ProfileWorkers() {
 
               <div className="mt-5">
                 <div>Skill</div>
-                <div className="flex flex-wrap gap-2">
-                  <Skill name="Javascript" />
-                  <Skill name="Node JS" />
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-2">
+                  {skillProfile.map((item, index) => (
+                    <Skill key={index} name={item.skill_name} />
+                  ))}
                 </div>
               </div>
             </div>
             <div className="px-5 py-5">
-              <div className={Styles.gmail}>Louistommo@gmail.com</div>
-              <div className={Styles.instagram}>@Louist91</div>
-              <div className={Styles.github}>@Louistommo</div>
-              <div className={Styles.gitlab}>@Louistommo91</div>
+              <div className={Styles.gmail}>{workersProfile.workers_email}</div>
+              <div className={Styles.instagram}>
+                {workersProfile.workers_instagram_url}
+              </div>
+              <div className={Styles.github}>
+                {workersProfile.workers_github_url}
+              </div>
+              <div className={Styles.gitlab}>
+                {workersProfile.workers_gitlab_url}
+              </div>
             </div>
           </div>
         </div>
@@ -125,11 +141,6 @@ export default function ProfileWorkers() {
           >
             <Tabs.Item title="Portofolio">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <PortofolioTabs />
-                <PortofolioTabs />
-                <PortofolioTabs />
-                <PortofolioTabs />
-                <PortofolioTabs />
                 <PortofolioTabs />
               </div>
             </Tabs.Item>
