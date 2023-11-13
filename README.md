@@ -1,7 +1,7 @@
 
 # Peworld Website Frontend Documentation
 
-This Documentation provides a comprehensive guide to the frontend development of the Peworld website. Here, you will find detailed information about the project's structure, and usage guidlines. Pleade read through this document carefully to gain insight into the Peworld Frontend
+This Documentation provides a comprehensive guide to the frontend development of the Peworld website. Here, you will find detailed information about the project's structure, and usage guidlines. Please read through this document carefully to gain insight into the Peworld Frontend
 
 ## Table Of Content
 - [Project Structure](#project-structure)
