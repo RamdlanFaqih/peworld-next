@@ -21,7 +21,7 @@ export default function LandingPage() {
     }
   }, []);
   return (
-    <div className={`${Styles.navbar} py-5`}>
+    <div className={`${Styles.navbar}`}>
       {isLoggedIn ? (
         <div className={`${Styles.navbar} py-5`}>
           <NavbarAfterLogin />
@@ -44,8 +44,8 @@ export default function LandingPage() {
               Talenta terbaik negri untuk perubahan revolusi 4.0
             </h1>
             <p className={Styles.description}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              Peworld dapat membantu Anda menemukan orang yang tepat untuk tim
+              Anda.
             </p>
           </div>
           <div className={Styles.button}>
@@ -93,25 +93,20 @@ export default function LandingPage() {
               <div className={`${Styles.tickItem}`}>
                 <FaCheck className={Styles.tickIcon} />
                 <span className={Styles.tickText}>
-                  Lorem Ipsum dolor sit amet
+                  Menjangkau banyak calon talenta dari berbagai bidang
+                  pemrograman.
                 </span>
               </div>
               <div className={`${Styles.tickItem}`}>
                 <FaCheck className={Styles.tickIcon} />
                 <span className={Styles.tickText}>
-                  Lorem Ipsum dolor sit amet
+                  Informasi Profil yang lengkap
                 </span>
               </div>
               <div className={`${Styles.tickItem}`}>
                 <FaCheck className={Styles.tickIcon} />
                 <span className={Styles.tickText}>
-                  Lorem Ipsum dolor sit amet
-                </span>
-              </div>
-              <div className={`${Styles.tickItem}`}>
-                <FaCheck className={Styles.tickIcon} />
-                <span className={Styles.tickText}>
-                  Lorem Ipsum dolor sit amet
+                  Proses Rekrutmen yang efisien
                 </span>
               </div>
             </div>
@@ -130,8 +125,8 @@ export default function LandingPage() {
             <div>
               <h1 className={Styles.tagline}>Skill Talent</h1>
               <p className={Styles.description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Terdiri dari individu yang mahir dalam berbagai bahasa
+                pemrograman
               </p>
             </div>
             <div className={`${Styles.tickList} mt-2 grid grid-cols-2`}>
@@ -196,13 +191,28 @@ export default function LandingPage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
           <div className="flex justify-end">
-            <CardOpinion />
+            <CardOpinion
+              displayPicture="/displayPicture.png"
+              username="Ramdlan Faqih"
+              job="Fullstack Web & Mobile Developer"
+              comment="Sebelum daftar Peworld, saya susah dapat pekerjaan. Setelah daftar saya langsung dapat pekerjaan"
+            />
           </div>
           <div className="flex justify-center">
-            <CardOpinion />
+            <CardOpinion
+              displayPicture="/frankFlores.jpg"
+              username="Frank Flores"
+              job="Hiring Manager"
+              comment="Peworld memudahkan saya untuk mencari orang yang tepat untuk bisa bergabung di perusahaan"
+            />
           </div>
           <div className="flex justify-start">
-            <CardOpinion />
+            <CardOpinion
+              displayPicture="/tomHardy.jpg"
+              username="Tom Hardy"
+              job="Frontend Developer"
+              comment="Saya hanya perlu menampilkan Portofolio dan Pengalaman kerja saya di Peworld. Setelah itu saya mendapatkan banyak tawaran pekerjaan"
+            />
           </div>
         </div>
       </div>

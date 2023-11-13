@@ -16,6 +16,42 @@ This Documentation provides a comprehensive guide to the frontend development of
 Peworld is a HireJob website aimed at connection job seekers and recruiters. You can browse job listings from various industries and locations or create your own profile and showcase your portfolio and resume. Peworld can help you find your dreams. And if you are a recruiter, Peworld can help you find the right person for your team.
 
 ## Screenshots
+<details>
+  <summary>
+    Login
+  </summary>
+<img src="screenshots/Login.png" alt="Login" />
+</details>
+<details>
+  <summary>
+    Register Workers
+  </summary>
+<img src="screenshots/registerWorkers.png" alt="Login" />
+</details>
+<details>
+  <summary>
+    Register Recruiters
+  </summary>
+<img src="screenshots/registerRecruiters.png" alt="Login" />
+</details>
+<details>
+  <summary>
+    Landing Page
+  </summary>
+<img src="screenshots/LandingPage.png" alt="Landing Page" />
+</details>
+<details>
+  <summary>
+    Profile Workers
+  </summary>
+<img src="screenshots/ProfilePortofolio.png" alt="Profile Workers" />
+</details>
+<details>
+  <summary>
+    Edit Profile Workers
+  </summary>
+<img src="screenshots/EditProfileWorkers.png" alt="Edit Profile" />
+</details>
 
 ## Built With
 - [Next.js](https://nextjs.org/)
@@ -96,7 +132,7 @@ Certainly! If you want users to fork the Peworld website frontend repository bef
 
 Congrlatulations, you can set up the Peworld website frontend for development.
 
-## Screenshots
-
 ## Related Project
+
+
 

@@ -92,8 +92,8 @@ export default function Register() {
               <div className={Styles.greetings}>
                 <h1 className={Styles.halo}>Halo, Pewpeople</h1>
                 <p className={Styles.desc}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  euismod ipsum et dui rhoncus auctor.
+                  Selamat datang di Peworld! Silakan lengkapi formulir
+                  pendaftaran untuk memulai pencarian talenta terbaik untuk tim.
                 </p>
               </div>
               <div className={Styles.inputContainer}>
@@ -159,7 +159,12 @@ export default function Register() {
                   />
                   <div className={Styles.actionContainer}>
                     <div className={Styles.buttonContainer}>
-                      <Button type="submit" style="filled" text="Masuk" />
+                      <Button
+                        type="submit"
+                        style="custom"
+                        height="45px"
+                        text="Daftar"
+                      />
                       {showSuccessAlert && (
                         <div className="alert success">
                           Registrasi berhasil! Silakan masuk untuk melanjutkan.

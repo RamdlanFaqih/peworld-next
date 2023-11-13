@@ -17,8 +17,7 @@ const Footer = () => {
           </div>
           <div className={Styles.footerTextContainer}>
             <p className={Styles.footerText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              euismod ipsum et dui rhoncus auctor.
+              Find the right person for your team.
             </p>
           </div>
         </div>

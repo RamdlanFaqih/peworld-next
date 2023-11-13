@@ -95,7 +95,7 @@ export default function Register() {
               <div className={Styles.greetings}>
                 <h1 className={Styles.halo}>Halo, Pewpeople</h1>
                 <p className={Styles.desc}>
-                  Selamat datang di Pewrold! Silakan lengkapi formulir
+                  Selamat datang di Peworld! Silakan lengkapi formulir
                   pendaftaran untuk memulai perjalanan karier Anda bersama kami.
                 </p>
               </div>
