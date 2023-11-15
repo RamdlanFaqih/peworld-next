@@ -14,38 +14,49 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
   const [workers, setWorkers] = React.useState([]);
+  const [pagination, setPagination] = React.useState({
+    currentPage: 1,
+    dataPerPage: 3,
+    totalPage: 1,
+    totalData: 0,
+  });
   const { search: searchQueryFromUrl } = router.query;
-  const [searchQuery, setSearchQuery] = React.useState(searchQueryFromUrl || "");
-
+  const [searchQuery, setSearchQuery] = React.useState(
+    searchQueryFromUrl || ""
+  );
   const [sort, setSort] = React.useState("");
+
   React.useEffect(() => {
     const { search } = router.query;
     if (search) {
       setSearchQuery(search);
       fetchWorkers(search, sort);
     } else {
-      // Jika tidak ada pencarian, dapatkan semua data
       fetchAllWorkers();
     }
-  }, [router.query]);
+  }, [router.query, sort]);
 
   const fetchAllWorkers = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_CSR}/workers`
+        `${process.env.NEXT_PUBLIC_API_CSR}/workers?page=1`
       );
-      setWorkers(response.data.message.rows);
+      setWorkers(response.data.result.result.rows);
+      setPagination(response.data.result)
+      console.log(response.data.result.result.rows);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const fetchWorkers = async (query, sortOption) => {
+  const fetchWorkers = async (query, sortOption, page) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_CSR}/workers?search=${query}&sort=${sortOption}`
+        `${process.env.NEXT_PUBLIC_API_CSR}/workers?search=${query}&sort=${sortOption}&page=${page}`
       );
-      setWorkers(response.data.message.rows);
+      setWorkers(response.data.result.result.rows);
+      setPagination(response.data.result);
+      console.log(response.data.result.result.rows);
     } catch (error) {
       console.error(error);
     }
@@ -62,9 +73,18 @@ export default function Home() {
       query: { search: queryParam, sort: sort },
     });
 
-    fetchWorkers(queryParam, sort);
+    fetchWorkers(queryParam, sort, 1);
   };
-  
+
+ const handleClickProfile = (workers_id) => {
+    router.push(`/profile/workers/${workers_id}`)
+  }
+
+  const handlePageChange = (newPage) => {
+    fetchWorkers(searchQuery, sort, newPage);
+  };
+
+
   return (
     <div>
       <div className={Styles.navbar}>
@@ -110,7 +130,7 @@ export default function Home() {
                 <div className="col-span-2 flex justify-center items-center">
                   <div>
                     <Image
-                      src={item.image || "/dummyProfile.png"} 
+                      src={item.image || "/dummyProfile.png"}
                       alt="profile picture"
                       width={100}
                       height={100}
@@ -144,7 +164,7 @@ export default function Home() {
                 </div>
                 <div className="col-start-11 col-span-2 flex items-center justify-center md:w-full sm:w-auto">
                   <div>
-                    <Button type="filled" text="Lihat Profile" />
+                    <Button type="filled" text="Lihat Profile" onClick={() => handleClickProfile(item.workers_id)} />
                   </div>
                 </div>
               </div>
@@ -155,18 +175,28 @@ export default function Home() {
           >
             <button
               className={`${Styles.buttonPagination} border rounded-sm flex items-center justify-center`}
+              onClick={() => handlePageChange(pagination.currentPage - 1)}
+              disabled={pagination.currentPage === 1}
             >
               <MdOutlineNavigateBefore size={24} color="#DDDDDE" />
             </button>
-            <div className="flex space-x-2">
-              <button
-                className={`${Styles.buttonPagination} border rounded-sm`}
-              >
-                1
-              </button>
-            </div>
+            {pagination.totalPage > 0 && (
+              <div className="flex space-x-2">
+                {[...Array(pagination.totalPage)].map((_, index) => (
+                  <button
+                    key={index + 1}
+                    className={`${Styles.buttonPagination} border rounded-sm`}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+            )}
             <button
               className={`${Styles.buttonPagination} border rounded-sm flex items-center justify-center`}
+              onClick={() => handlePageChange(pagination.currentPage + 1)}
+              disabled={pagination.currentPage >= pagination.totalPage}
             >
               <MdOutlineNavigateNext size={24} color="#DDDDDE" />
             </button>

@@ -59,7 +59,6 @@ export default function LandingPage() {
               alt="hero"
               width={500}
               height={500}
-              layout="fixed"
             />
           </div>
         </div>
@@ -76,7 +75,6 @@ export default function LandingPage() {
               alt="hero"
               width={496}
               height={496}
-              layout="fixed"
             />
           </div>
         </div>

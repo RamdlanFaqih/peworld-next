@@ -8,11 +8,13 @@ import Cookies from "js-cookie";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function NavbarAfterLogin() {
-  const userType = Cookies.get("role"); // Ambil jenis pengguna dari Cookies
+  const userType = Cookies.get("role"); //
+  const workers_id = Cookies.get("workers_id");
+  const recruiters_id = Cookies.get("recruiters_id")
 
-  let profileLink = "/profile/workers";
+  let profileLink = `/profile/workers/${workers_id}`;
   if (userType === "0") {
-    profileLink = "/profile/company";
+    profileLink = `/profile/company`;
   }
 
   return (

@@ -43,7 +43,11 @@ export default function ProfileWorkers() {
   const profileName = recruitersProfile?.name || "Recruiters Name";
   const profileField = recruitersProfile?.field|| "Recruiters Field";
   const profileCity = recruitersProfile?.city || "Recruiters City";
-  const profileDesc = recruitersProfile?.recruiters_desc || "Recruiters Descriptions"
+  const profileDesc = recruitersProfile?.recruiters_desc || "Recruiters Descriptions";
+  const profileEmail = recruitersProfile?.email || "Recruiters Email";
+  const profilePhoneNumber = recruitersProfile?.phone_number || "Recruiters Phone Number";
+  const profileLinkedin = recruitersProfile?.linkedin || "Recruiters Linkedin";
+
   return (
     <div>
       <div>
@@ -78,10 +82,10 @@ export default function ProfileWorkers() {
                 />
             </div>
             <div className="px-5 py-5">
-              <div className={Styles.gmail}>Louistommo@gmail.com</div>
-              <div className={Styles.instagram}>@Louist91</div>
-              <div className={Styles.github}>@Louistommo</div>
-              <div className={Styles.gitlab}>@Louistommo91</div>
+              <div className={Styles.gmail}>{profileEmail}</div>
+              {/* <div className={Styles.instagram}>@Louist91</div> */}
+              <div className={Styles.github}>{profilePhoneNumber}</div>
+              <div className={Styles.gitlab}>{profileLinkedin}</div>
             </div>
           </div>
         </div>

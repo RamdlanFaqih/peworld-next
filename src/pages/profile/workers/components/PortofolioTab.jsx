@@ -26,13 +26,14 @@ const PortofolioTabs = () => {
   return (
     <>
       {portofoliio.map((item, index) => (
-        <div key={index} className="flex flex-col items-center">
+        <div key={index} className="flex flex-col items-center bg-blue-100">
           <Image
             src={item.image}
             alt="hero"
             width={219}
             height={148}
-            className={`${Styles.image} rounded-lg`}
+            className={`rounded-lg`}
+            style={{width: '219px', height: '148px', objectFit: 'cover'}}
           />
           <div className={Styles.portofolio}>{item.app_name}</div>
         </div>

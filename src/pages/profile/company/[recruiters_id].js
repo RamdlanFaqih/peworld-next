@@ -11,6 +11,8 @@ import axios from "axios";
 import React from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import EditProfiePicRecruiters from "@/components/editProfilePic/recruiters";
+import { BiSolidPencil } from "react-icons/bi";
 
 export default function EditProfileCompany() {
   const [recruitersProfile, setRecruitersProfile] = React.useState("");
@@ -26,7 +28,7 @@ export default function EditProfileCompany() {
     linkedin: "",
   });
   const recruiters_id = Cookies.get("recruiters_id");
-  const router = useRouter()
+  const router = useRouter();
 
   React.useEffect(() => {
     const getRecruiters = async () => {
@@ -42,7 +44,7 @@ export default function EditProfileCompany() {
       }
     };
     getRecruiters();
-  }, []);
+  }, [recruiters_id]);
 
   const handleUpdateChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +62,7 @@ export default function EditProfileCompany() {
         data
       );
       console.log(response.data);
-      router.push('/profile/company')
+      router.push("/profile/company");
     } catch (error) {
       console.log("Update Failed:", error);
     }
@@ -79,7 +81,7 @@ export default function EditProfileCompany() {
         <div className="grid grid-cols-11">
           <div className="col-span-3 ">
             <div className="bg-white rounded-lg px-10">
-              <div className={`${Styles.imageContainer}  flex justify-center`}>
+              <div className={`${Styles.imageContainer} flex flex-col items-center justify-center`}>
                 <div style={{ width: "150px", height: "150px" }}>
                   <Image
                     src={profileImage}
@@ -89,6 +91,13 @@ export default function EditProfileCompany() {
                     objectFit="cover"
                     className={Styles.roundedImage}
                   />
+                </div>
+                <div
+                  className="flex items-center justify-center"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <BiSolidPencil />
+                  Edit
                 </div>
               </div>
               <div>
@@ -174,6 +183,9 @@ export default function EditProfileCompany() {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <EditProfiePicRecruiters onClose={() => setIsModalOpen(false)} />
+      )}
       <div className="footer">
         <Footer />
       </div>
