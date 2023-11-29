@@ -20,7 +20,7 @@ export default function EditProfiePicRecruiters({ onClose }) {
     const getRecruiters = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API}/recruiters/getData/${recruiters_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/${recruiters_id}`
         );
         console.log(response.data.data.rows[0]);
         setWorkersProfile(response.data.data.rows[0]);

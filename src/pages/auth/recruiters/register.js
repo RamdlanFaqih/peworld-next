@@ -5,10 +5,12 @@ import axios from "axios";
 import Button from "@/components/button/button";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Register() {
+  const router = useRouter();
   const [recruitersData, setRecruitersData] = React.useState({
     name: "",
     email: "",
@@ -40,6 +42,7 @@ export default function Register() {
       setShowErrorAlert(true);
       setTimeout(() => {
         setShowErrorAlert(false);
+        
       }, 3000);
       return;
     }
@@ -47,18 +50,20 @@ export default function Register() {
       setShowErrorAlert(true);
       setTimeout(() => {
         setShowErrorAlert(false);
+        
       }, 3000);
       return;
     }
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/recruiters/register`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/register`,
         recruitersData
       );
       console.log("Data Terkirim", response.data);
       setShowSuccessAlert(true);
       setTimeout(() => {
         setShowSuccessAlert(true);
+        router.push("/auth/recruiters/login")
       }, 3000);
     } catch (error) {
       console.log("Error", error);
@@ -167,12 +172,12 @@ export default function Register() {
                         text="Daftar"
                       />
                       {showSuccessAlert && (
-                        <div className="alert success">
+                        <div className={`${Styles.alert} ${Styles.success} text-center mt-4`}>
                           Registrasi berhasil! Silakan masuk untuk melanjutkan.
                         </div>
                       )}
                       {showErrorAlert && (
-                        <div className="alert error">
+                        <div className={`${Styles.alert} ${Styles.error} text-center mt-4`}>
                           Gagal mendaftar. Pastikan semua informasi valid.
                         </div>
                       )}
@@ -181,7 +186,7 @@ export default function Register() {
                       <p>
                         Anda sudah punya akun?
                         <Link
-                          href="/auth/workers/login"
+                          href="/auth/recruiters/login"
                           style={{ color: "#fbb017" }}
                         >
                           Masuk disini

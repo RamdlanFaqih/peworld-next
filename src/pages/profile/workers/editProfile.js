@@ -60,7 +60,7 @@ export default function EditProfileWorkers() {
     const getWorkers = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API}/workers/getData/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers/${workers_id}`
         );
         setWorkersProfile(response.data.data.rows[0]);
         setUserRole(response.data.data.rows[0].role);

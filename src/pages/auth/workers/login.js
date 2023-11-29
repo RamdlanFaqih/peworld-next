@@ -35,7 +35,7 @@ export default function Login() {
     }
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/workers/login`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/login/workers`,
         workers
       );
       console.log("Login successful", response.data);
