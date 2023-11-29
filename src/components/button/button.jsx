@@ -16,7 +16,7 @@ const Button = ({ type, text, onClick, width, height, style }) => {
       style={{
         width: width ? width : "100%",
         height: height ? height : "100%",
-      }} // Menggunakan width: 100% jika width tidak diisi
+      }} 
       onClick={onClick}
     >
       {text}
@@ -28,13 +28,13 @@ Button.propTypes = {
   style: PropTypes.oneOf(["filled", "outline", "custom"]),
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  width: PropTypes.string, // Menambahkan properti width
+  width: PropTypes.string, 
   height: PropTypes.height,
 };
 
 Button.defaultProps = {
   style: "filled",
-  type: "button", // Mengatur nilai default untuk properti type
+  type: "button",
   onClick: () => {},
 };
 
