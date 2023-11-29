@@ -16,38 +16,59 @@ import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function ProfileWorkers() {
-  const router = useRouter();
-  const [workersProfile, setWorkersProfile] = React.useState("");
-  const [skillProfile, setSkillProfile] = React.useState([]);
-  const [userRole, setUserRole] = React.useState("");
-  // const workers_id = Cookies.get("workers_id");
-  const workers_id = router.query.workers_id;
-  console.log(workers_id);
+export async function getServerSideProps({ query }) {
+  const workers_id = query.workers_id;
+  const userRole = query.userRole
+  console.log("userRole dari ssr", userRole);
 
-  React.useEffect(() => {
-    const getWorkers = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/workers/skill/${workers_id}`
-        );
-        setWorkersProfile(response.data.rows[0]);
-        setUserRole(response.data.rows[0].workers_role);
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CSR}/workers/skill/${workers_id}`
+    );
+    const workersProfile = response.data.rows[0];
+    const skill = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CSR}/skill/workers/${workers_id}`
+    );
+    const skillProfile = skill.data.data;
 
-        const skill = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/skill/workers/${workers_id}`
-        );
-        setSkillProfile(skill.data.data);
-      } catch (error) {
-        console.log("get workers failed", error);
-      }
+    return {
+      props: {
+        workersProfile,
+        skillProfile,
+        workers_id,
+        userRole,
+      },
     };
-    getWorkers();
-  }, []);
-  console.log(skillProfile);
+  } catch (error) {
+    console.log("Error Fetching Data", error);
+
+    return {
+      props: {
+        workersProfile: {},
+        skillProfile: [],
+        workers_id: "",
+        userRole: "0"
+      },
+    };
+  }
+}
+
+export default function profileWorkers({
+  workersProfile,
+  skillProfile,
+  workers_id,
+  userRole
+}) {
+  const router = useRouter();
+
+  console.log("ini userRole", userRole);
 
   const handleEditProfile = () => {
     router.push(`/profile/workers/editProfile`);
+  };
+
+  const handleHire = () => {
+    router.push(`/profile/workers/hire?workers_id=${workers_id}`);
   };
 
   const profileImage = workersProfile?.workers_image || "/dummyProfile.png";
@@ -61,7 +82,7 @@ export default function ProfileWorkers() {
     workersProfile?.workers_workers_desc || "Deskripsi";
   return (
     <div>
-      <div className={Styles.navbar}>
+      <div className={`${Styles.navbar} px-10`}>
         <Navbar />
       </div>
       <div
@@ -95,12 +116,17 @@ export default function ProfileWorkers() {
               </div>
             </div>
             <div className={`${Styles.hire} px-5`}>
-              {userRole === 0 && (
+              {userRole === "0" && (
                 <>
-                  <Button type="filled" text="Hire" height="50px" />
+                  <Button
+                    type="filled"
+                    text="Hire"
+                    height="50px"
+                    onClick={handleHire}
+                  />
                 </>
               )}
-              {userRole === 1 && (
+              {userRole === "1" && (
                 <>
                   <Button
                     type="filled"

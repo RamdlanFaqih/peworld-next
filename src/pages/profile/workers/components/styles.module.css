@@ -36,3 +36,13 @@
   font-weight: 400;
   color: #9ea0a5;
 }
+
+.deleteIcon {
+  cursor: pointer;
+  background-color: #5e50a1;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}

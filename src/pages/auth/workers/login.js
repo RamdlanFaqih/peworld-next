@@ -49,7 +49,7 @@ export default function Login() {
       );
       Cookies.set(
         "role",
-        JSON.stringify(response.data.role)
+        (response.data.role)
       )
       setShowSuccessAlert(true);
       setTimeout(() => {
@@ -68,7 +68,7 @@ export default function Login() {
 
   return (
     <div className={`bg-gray-100 min-h-screen ${Styles.background}`}>
-      <div className={`container mx-auto py-10 ${Styles.container}`}>
+      <div className={`container ${Styles.container}`}>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${Styles.content}`}>
           <div className={`${Styles.imageContainer} relative`}>
             <div className={`${Styles.overlay}`}></div>
@@ -141,7 +141,7 @@ export default function Login() {
                     </div>
                     <div className={`${Styles.register} text-center`}>
                       <p>
-                        Anda belum punya punya akun?{" "}
+                        Anda belum punya punya akun?
                         <Link
                           href="/auth/workers/register"
                           style={{ color: "#fbb017" }}

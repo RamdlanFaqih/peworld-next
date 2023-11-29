@@ -18,7 +18,11 @@
   padding-right: 150px;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
+}
+
+.buttonProfile {
+  margin-left: 450px;
 }
 
 .icSearch {
@@ -33,61 +37,90 @@
 .profile {
   background-color: #fff;
   margin-top: 50px;
-  min-height: 100%; /* Menggunakan min-height untuk memanjangkan vertikal */
+  min-height: 100%;
   display: flex;
-  flex-direction: column; /* Menggunakan flex-direction: column agar konten tata letak vertikal */
+  flex-direction: column;
+}
+.profileRows {
+  padding: 10px;
+  border-bottom: 2px solid #9ea0a5;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
-.profileRows {
-    height: 200px;
-    background-color: #fff;
+
+.imageContainer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .roundedImage {
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  object-fit: cover;
 }
 
 .name {
-    font-size: 22px;
-    color: #1F2A36;
-    font-weight: 600;
+  font-size: 22px;
+  color: #1f2a36;
+  font-weight: 600;
 }
 
 .job,
 .location {
-    font-size: 14px;
-    color: #9EA0A5;
-    font-weight: 400;
+  font-size: 14px;
+  color: #9ea0a5;
+  font-weight: 400;
 }
 
 .skillsContainer {
-    margin-top: 17px;
+  margin-top: 17px;
 }
 
 .skillsBox {
-    background-color: rgba(251, 176, 23, 0.60);
-    display: inline-block; 
-    padding: 4px 24px;
-    border: 1px solid #FBB017;
-    border-radius: 4px;
+  background-color: rgba(251, 176, 23, 0.60);
+  display: inline-block;
+  padding: 4px 24px;
+  border: 1px solid #fbb017;
+  border-radius: 4px;
 }
 
 .skills {
-    color: #fff;
+  color: #fff;
+}
+
+.buttonProfile {
+  background-color: #1f2a36;
+  border-radius: 100px;
 }
 
 .pagination {
-    height: 58px;
+  height: 58px;
 }
 
 .buttonPagination {
-    width: 57px;
-    height: 58px;
-    background-color: #fff;
+  width: 57px;
+  height: 58px;
+  background-color: #fff;
 }
 
+
+
+@media  (max-width: 1440px) {
+  .buttonProfile {
+    margin-left: 300px;
+  }
+}
+
+@media  (max-width: 1050px) {
+  .buttonProfile {
+    margin-left: 0;
+  }
+}
+
+/* Small Screens */
 @media (max-width: 768px) {
   .topJobs {
     padding-left: 50px;
@@ -98,7 +131,9 @@
     padding-left: 50px;
     padding-right: 50px;
   }
-
+  .buttonProfile {
+    margin-left: 0;
+  }
   .icSearch {
     margin-right: 10px;
   }
@@ -110,11 +145,13 @@
   .profile {
     margin-top: 30px;
   }
+
   .skillsBox {
-    padding: 4px 8px;
+    padding: 4px 12px; 
   }
 }
 
+/* Extra Small Screens */
 @media (max-width: 425px) {
   .topJobs {
     padding-left: 20px;
@@ -139,6 +176,6 @@
   }
 
   .skillsBox {
-    padding: 4px 6px;
+    padding: 4px 6px; 
   }
 }

@@ -4,6 +4,7 @@ import Styles from "../auth.module.css";
 import axios from "axios";
 import Button from "@/components/button/button";
 import React from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -97,7 +98,7 @@ export default function Register() {
                 </p>
               </div>
               <div className={Styles.inputContainer}>
-                <form className="flex flex-col gap-y-2" onSubmit={handleSubmit}>
+                <form className="flex flex-col gap-y-1" onSubmit={handleSubmit}>
                   <label className="font-semibold text-sm">Nama</label>
                   <input
                     className="border py-1 px-2 rounded-md"
@@ -178,7 +179,13 @@ export default function Register() {
                     </div>
                     <div className={`${Styles.register} text-center`}>
                       <p>
-                        Anda sudah punya akun? <a href="#">Masuk disini</a>
+                        Anda sudah punya akun?
+                        <Link
+                          href="/auth/workers/login"
+                          style={{ color: "#fbb017" }}
+                        >
+                          Masuk disini
+                        </Link>
                       </p>
                     </div>
                   </div>

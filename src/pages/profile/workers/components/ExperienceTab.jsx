@@ -8,7 +8,9 @@ import React from "react";
 const ExperienceTab = () => {
   const router = useRouter();
   const [experience, setExperience] = React.useState([]);
-  const workers_id = Cookies.get("workers_id");
+  const workers_id = router.query.workers_id;
+  console.log(workers_id);
+
 
   React.useEffect(() => {
     const getExperience = async () => {

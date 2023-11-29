@@ -36,21 +36,23 @@ export default function ProfileWorkers() {
   }, []);
 
   const handleEditProfile = () => {
-    router.push(`/profile/company/${recruiters_id}`)
-  }
+    router.push(`/profile/company/${recruiters_id}`);
+  };
 
   const profileImage = recruitersProfile?.image || "/dummyProfile.png";
   const profileName = recruitersProfile?.name || "Recruiters Name";
-  const profileField = recruitersProfile?.field|| "Recruiters Field";
+  const profileField = recruitersProfile?.field || "Recruiters Field";
   const profileCity = recruitersProfile?.city || "Recruiters City";
-  const profileDesc = recruitersProfile?.recruiters_desc || "Recruiters Descriptions";
+  const profileDesc =
+    recruitersProfile?.recruiters_desc || "Recruiters Descriptions";
   const profileEmail = recruitersProfile?.email || "Recruiters Email";
-  const profilePhoneNumber = recruitersProfile?.phone_number || "Recruiters Phone Number";
+  const profilePhoneNumber =
+    recruitersProfile?.phone_number || "Recruiters Phone Number";
   const profileLinkedin = recruitersProfile?.linkedin || "Recruiters Linkedin";
 
   return (
     <div>
-      <div>
+      <div className="px-10">
         <Navbar />
       </div>
       <div className={Styles.bodyContainer}>
@@ -70,16 +72,14 @@ export default function ProfileWorkers() {
             <div className={Styles.company}>{profileName}</div>
             <div className={Styles.field}>{profileField}</div>
             <div className={Styles.residence}>{profileCity}</div>
-            <div className={Styles.description}>
-              {profileDesc}
-            </div>
+            <div className={Styles.description}>{profileDesc}</div>
             <div className={Styles.buttonEditProfile}>
-                <Button
-                  style="filled"
-                  height="50px"
-                  text="Edit Profile"
-                  onClick={handleEditProfile}
-                />
+              <Button
+                style="filled"
+                height="50px"
+                text="Edit Profile"
+                onClick={handleEditProfile}
+              />
             </div>
             <div className="px-5 py-5">
               <div className={Styles.gmail}>{profileEmail}</div>

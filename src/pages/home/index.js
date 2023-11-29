@@ -9,6 +9,7 @@ import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 import React from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Cookies from "js-cookie";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
     searchQueryFromUrl || ""
   );
   const [sort, setSort] = React.useState("");
+  const userType = Cookies.get("role")
 
   React.useEffect(() => {
     const { search } = router.query;
@@ -42,7 +44,7 @@ export default function Home() {
         `${process.env.NEXT_PUBLIC_API_CSR}/workers?page=1`
       );
       setWorkers(response.data.result.result.rows);
-      setPagination(response.data.result)
+      setPagination(response.data.result);
       console.log(response.data.result.result.rows);
     } catch (error) {
       console.error(error);
@@ -62,7 +64,9 @@ export default function Home() {
     }
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+
     let queryParam = searchQuery;
     if (!searchQuery) {
       queryParam = "";
@@ -75,25 +79,31 @@ export default function Home() {
 
     fetchWorkers(queryParam, sort, 1);
   };
-
- const handleClickProfile = (workers_id) => {
-    router.push(`/profile/workers/${workers_id}`)
-  }
+  const handleClickProfile = (workers_id) => {
+    const query = {
+      workers_id,
+      userRole: userType === "0" ? userType : null,
+    };
+    router.push({
+      pathname: `/profile/workers/${workers_id}`,
+      query,
+    });
+  };
+  
 
   const handlePageChange = (newPage) => {
     fetchWorkers(searchQuery, sort, newPage);
   };
 
-
   return (
     <div>
-      <div className={Styles.navbar}>
+      <div className={`${Styles.navbar} md:px-10`}>
         <Navbar />
       </div>
-      <div className={Styles.topJobs}>
+      <div className={`${Styles.topJobs} md:px-5`}>
         <h1 className={`${Styles.topJobsText}`}>Top Jobs</h1>
       </div>
-      <div className={`${Styles.bodyContainer}`}>
+      <div className={`${Styles.bodyContainer} md:px-5`}>
         <div>
           <form className="flex gap-y-2 p-3 bg-white items-center">
             <div className="relative flex-grow">
@@ -120,26 +130,26 @@ export default function Home() {
           </form>
 
           <div
-            className={`${Styles.profile} md:flex md:items-center md:justify-center sm:flex-col sm:items-start`}
+            className={`${Styles.profile} flex flex-col md:items-start justify-center sm:flex-col sm:items-center flex-wrap`}
           >
             {workers.map((item) => (
               <div
                 key={item.workers_id}
-                className={`${Styles.profileRows} grid grid-cols-12 gap-4 md:w-full`}
+                className={`${Styles.profileRows} flex flex-col md:flex-row items-center justify-between gap-10 w-full`}
               >
-                <div className="col-span-2 flex justify-center items-center">
-                  <div>
+                <div className="flex items-start px-10">
+                  <div className={Styles.imageContainer}>
                     <Image
                       src={item.image || "/dummyProfile.png"}
                       alt="profile picture"
                       width={100}
                       height={100}
-                      objectFit="contain"
+                      objectFit="cover"
                       className={Styles.roundedImage}
                     />
                   </div>
                 </div>
-                <div className="col-start-3 col-span-6 flex flex-col justify-center">
+                <div className="md:w-8/12 flex flex-col justify-center space-y-2">
                   <div className="flex flex-col justify-center gap-1">
                     <h1 className={Styles.name}>{item.name}</h1>
                     <p className={Styles.job}>{item.profession}</p>
@@ -162,18 +172,21 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="col-start-11 col-span-2 flex items-center justify-center md:w-full sm:w-auto">
-                  <div>
-                    <Button type="filled" text="Lihat Profile" onClick={() => handleClickProfile(item.workers_id)} />
-                  </div>
+                <div className={`md:w-2/12 flex md:items-end justify-end ${Styles.buttonProfile} `}>
+                  <Button
+                    style="filled"
+                    text="Lihat Profile"
+                    onClick={() => handleClickProfile(item.workers_id)}
+                  />
                 </div>
               </div>
             ))}
           </div>
+
           <div
             className={`${Styles.pagination} flex items-center justify-center space-x-4 mt-8`}
           >
-            <button
+             <button
               className={`${Styles.buttonPagination} border rounded-sm flex items-center justify-center`}
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage === 1}

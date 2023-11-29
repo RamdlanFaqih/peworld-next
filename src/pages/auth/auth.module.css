@@ -7,15 +7,14 @@
 }
 
 .overlay {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: #5e50a1;
-  opacity: 0.7; /* Atur opasitas sesuai keinginan Anda */
-  z-index: 1; /* Memastikan overlay berada di depan gambar */
+  opacity: 0.7; 
+  z-index: 1; 
 }
 
 .heroTitle {
@@ -33,16 +32,18 @@
 
 
 .container {
-  padding: 39px 75px;
+  max-width: 100%;
+  box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
 }
+
 
 .imageContainer {
   width: 650px;
-  height: 822px;
+  height: 100vh;
 }
 
 .loginContainer {
-  margin-top: 106px;
+  margin-top: 50px;
   max-width: 576px;
 }
 
@@ -56,7 +57,7 @@
 }
 
 .inputContainer {
-  margin-top: 52px;
+  margin-top: 15px;
 }
 
 .actionContainer {
@@ -68,7 +69,7 @@
 }
 
 .register {
-  margin-top: 28px;
+  margin-top: 10px;
 }
 
 .alert {
@@ -91,15 +92,11 @@
 }
 
 
-/* Gunakan media query untuk ukuran tablet */
 @media screen and (max-width: 768px) {
-  .container {
-    padding: 20px; /* Mengurangi padding pada layar tablet */
-  }
+
 
   .imageContainer {
-    width: 100%; /* Mengubah lebar gambar agar mengisi lebar layar */
-    height: auto; /* Mengubah tinggi gambar agar disesuaikan dengan lebar */
+    width: 100%; 
   }
 
   .loginContainer {
@@ -107,28 +104,32 @@
   }
 
   .heroTitle {
-    font-size: 36px; /* Mengurangi ukuran font pada layar tablet */
+    font-size: 36px; 
   }
 }
 
-/* Gunakan media query untuk ukuran ponsel */
+
 @media screen and (max-width: 480px) {
   .content {
     display: flex;
-    flex-direction: column; /* Mengubah tata letak konten menjadi kolom pada layar ponsel */
+    flex-direction: column; 
+  }
+
+  .container {
+    padding: 15px;
   }
 
   .imageContainer,
   .heroTitle {
-    display: none; /* Menyembunyikan gambar pada layar ponsel */
+    display: none; 
   }
 
   .loginContainer {
     margin-top: 20px;
-    max-width: 100%; /* Membuat form login mengisi lebar layar pada layar ponsel */
+    max-width: 100%;
   }
 
   .heroTitle {
-    font-size: 24px; /* Mengurangi ukuran font pada layar ponsel */
+    font-size: 24px; 
   }
 }

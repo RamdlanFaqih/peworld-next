@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useRouter } from "next/router";
 import Footer from "@/components/footer/footer";
 import Styles from "./styles.module.css";
 import Navbar from "@/components/navbar/navbar";
@@ -12,10 +13,12 @@ import axios from "axios";
 import React from "react";
 import EditProfiePic from "@/components/editProfilePic/editProfilePic";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function EditProfileWorkers() {
+  const router = useRouter();
   const [workersProfile, setWorkersProfile] = React.useState("");
   const [userRole, setUserRole] = React.useState("");
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -41,11 +44,12 @@ export default function EditProfileWorkers() {
     app_type: "",
     image: "",
   });
-  
+
   const [appImage, setAppImage] = React.useState("");
   const [showSuccessAlert, setShowSuccessAlert] = React.useState(false);
   const [showErrorAlert, setShowErrorAlert] = React.useState(false);
   const workers_id = Cookies.get("workers_id");
+  const userType = Cookies.get("userRole");
 
   React.useEffect(() => {
     console.log(workers_id);
@@ -97,7 +101,6 @@ export default function EditProfileWorkers() {
       [name]: value,
     });
   };
-  
 
   const handleAppImage = (e) => {
     const uploader = e.target.files[0];
@@ -115,8 +118,17 @@ export default function EditProfileWorkers() {
         data
       );
       console.log(response.data);
+      Swal.fire({
+        title: "Sukses!",
+        text: "Data diri berhasil diupdate.",
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => {
+        window.location.reload();
+      });
     } catch (error) {
-      console.log("Updatee Failed", error);
+      console.log("Update Failed", error);
+      Swal.fire("Error!", "Terjadi kesalahan saat update.", "error");
     }
   };
 
@@ -128,8 +140,17 @@ export default function EditProfileWorkers() {
         skill
       );
       console.log(response.data);
+      Swal.fire({
+        title: "Sukses",
+        text: "Skill Berhasil Ditambahkan",
+        icon: "success",
+        comfirmButtonText: "OK",
+      }).then(() => {
+        window.location.reload();
+      });
     } catch (error) {
       console.log("Error insert skill", error);
+      Swal.fire("Error!", "Terjadi kesalahan saat menambahkan Skill.", "error");
     }
   };
 
@@ -141,6 +162,16 @@ export default function EditProfileWorkers() {
         experince
       );
       console.log(response.data);
+      Swal.fire({
+        title: "Sukses",
+        text: "Pengalaman Berhasil Ditambahkan",
+        icon: "success",
+      }).then(() => {
+        router.push({
+          pathname: `/profile/workers/${workers_id}`,
+          query: { userRole: userType, workers_id },
+        });
+      });
     } catch (error) {
       console.log("Error Insert Experience", error);
     }
@@ -163,6 +194,16 @@ export default function EditProfileWorkers() {
         portofolioData
       );
       console.log(response.data);
+      Swal.fire({
+        title: "Sukses",
+        text: "Portofolio Berhasil Ditambahkan",
+        icon: "success",
+      }).then(() => {
+        router.push({
+          pathname: `/profile/workers/${workers_id}`,
+          query: { userRole: userType, workers_id },
+        });
+      });
     } catch (error) {
       console.log("Error inserting portofolio", error);
     }
@@ -176,7 +217,7 @@ export default function EditProfileWorkers() {
 
   return (
     <div>
-      <div className={Styles.navbar}>
+      <div className={`${Styles.navbar} px-10`}>
         <Navbar />
       </div>
       <div className={`${Styles.bodyContainer}`}>

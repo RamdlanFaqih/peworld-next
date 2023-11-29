@@ -6,6 +6,7 @@ import Styles from "../auth.module.css";
 import Button from "@/components/button/button";
 import {useRouter} from "next/router";
 import Cookies from "js-cookie";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -137,7 +138,13 @@ export default function Login() {
                     </div>
                     <div className={`${Styles.register} text-center`}>
                       <p>
-                        Anda belum punya akun? <a href="#">Daftar disini</a>
+                        Anda belum punya punya akun?
+                        <Link
+                          href="/auth/recruiters/register"
+                          style={{ color: "#fbb017" }}
+                        >
+                          Daftar disini
+                        </Link>
                       </p>
                     </div>
                   </div>

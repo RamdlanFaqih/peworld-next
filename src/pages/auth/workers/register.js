@@ -166,7 +166,7 @@ export default function Register() {
                     </div>
                     <div className={`${Styles.register} text-center`}>
                       <p>
-                        Anda sudah punya akun?{" "}
+                        Anda sudah punya akun?
                         <Link
                           href="/auth/workers/login"
                           style={{ color: "#fbb017" }}

@@ -21,7 +21,7 @@ export default function LandingPage() {
     }
   }, []);
   return (
-    <div className={`${Styles.navbar}`}>
+    <div className={`${Styles.home}`}>
       {isLoggedIn ? (
         <div className={`${Styles.navbar} py-5`}>
           <NavbarAfterLogin />
@@ -188,7 +188,7 @@ export default function LandingPage() {
           <h1 className={Styles.titleOpinion}>Their opinion about peworld</h1>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-          <div className="flex justify-end">
+          <div className="flex justify-center">
             <CardOpinion
               displayPicture="/displayPicture.png"
               username="Ramdlan Faqih"
@@ -204,7 +204,7 @@ export default function LandingPage() {
               comment="Peworld memudahkan saya untuk mencari orang yang tepat untuk bisa bergabung di perusahaan"
             />
           </div>
-          <div className="flex justify-start">
+          <div className="flex justify-center">
             <CardOpinion
               displayPicture="/tomHardy.jpg"
               username="Tom Hardy"
