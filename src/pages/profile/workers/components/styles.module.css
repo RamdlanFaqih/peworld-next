@@ -10,6 +10,9 @@
   margin-top: 8px;
 }
 
+.imagePortofolio {
+  border: 4px solid #5e50a1;
+}
 .hire {
   height: 50px;
 }

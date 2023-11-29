@@ -65,7 +65,7 @@ export default function EditProfiePic({ onClose }) {
   
     try {
       const response = await axios.put(
-        `${process.env.NEXT_PUBLIC_API_CSR}/update/workers/workers_profile_picture/${workers_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/update/workers/workers_profile_picture/${workers_id}`,
         formData,
         {
           headers: {

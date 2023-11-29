@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
+
 const PortofolioTabs = () => {
   const router = useRouter();
   const [portofolio, setPortofolio] = React.useState([]);
@@ -17,7 +18,7 @@ const PortofolioTabs = () => {
     const getPortofolio = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/portofolio/workers/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/portofolio/workers/${workers_id}`
         );
         setPortofolio(response.data.data.rows);
         console.log("ini portofolio", response.data.data.rows);
@@ -31,7 +32,7 @@ const PortofolioTabs = () => {
   const handleDelete = async (portofolio_id) => {
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_CSR}/portofolio/delete/${portofolio_id}`
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/portofolio/delete/${portofolio_id}`
       )
       
       Swal.fire({
@@ -55,7 +56,7 @@ const PortofolioTabs = () => {
             alt="hero"
             width={219}
             height={148}
-            className={`rounded-lg`}
+            className={`rounded-lg ${Styles.imagePortofolio}`}
             style={{ width: "219px", height: "148px", objectFit: "cover" }}
           />
           <div className={Styles.portofolio}>{item.app_name}</div>

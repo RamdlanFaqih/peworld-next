@@ -27,12 +27,13 @@ export default function EditProfileWorkers() {
     profession: "",
     residence: "",
     workplace: "",
+    work_category: "",
     workers_desc: "",
   });
   const [skill, setSkill] = React.useState({
     skill_name: "",
   });
-  const [experince, setExperience] = React.useState({
+  const [experience, setExperience] = React.useState({
     job_position: "",
     company_name: "",
     duration_employement: "",
@@ -49,7 +50,9 @@ export default function EditProfileWorkers() {
   const [showSuccessAlert, setShowSuccessAlert] = React.useState(false);
   const [showErrorAlert, setShowErrorAlert] = React.useState(false);
   const workers_id = Cookies.get("workers_id");
-  const userType = Cookies.get("userRole");
+  const userType = Cookies.get("role");
+  console.log(userType);
+  console.log(workers_id);
 
   React.useEffect(() => {
     console.log(workers_id);
@@ -79,6 +82,7 @@ export default function EditProfileWorkers() {
 
   const handleSkillChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setSkill({
       ...skill,
       [name]: value,
@@ -88,7 +92,7 @@ export default function EditProfileWorkers() {
   const handleExperienceChange = (e) => {
     const { name, value } = e.target;
     setExperience({
-      ...experince,
+      ...experience,
       [name]: value,
     });
   };
@@ -114,7 +118,7 @@ export default function EditProfileWorkers() {
 
     try {
       const response = await axios.put(
-        `${process.env.NEXT_PUBLIC_API_CSR}/update/workers/biodata/${workers_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/update/workers/biodata/${workers_id}`,
         data
       );
       console.log(response.data);
@@ -136,7 +140,7 @@ export default function EditProfileWorkers() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_CSR}/skill/insert/${workers_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/skill/insert/${workers_id}`,
         skill
       );
       console.log(response.data);
@@ -158,8 +162,8 @@ export default function EditProfileWorkers() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_CSR}/experience/insert/data/${workers_id}`,
-        experince
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/experience/insert/data/${workers_id}`,
+        experience
       );
       console.log(response.data);
       Swal.fire({
@@ -190,7 +194,7 @@ export default function EditProfileWorkers() {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_CSR}/portofolio/insert/${workers_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/portofolio/insert/${workers_id}`,
         portofolioData
       );
       console.log(response.data);
@@ -299,6 +303,14 @@ export default function EditProfileWorkers() {
                     value={data.workplace}
                     onChange={handleUpdateChange}
                   />
+                   <Input
+                    type="text"
+                    label="Jenis Kontrak Kerja"
+                    placeholder="Masukan Jenis Kontrak Kerja"
+                    name="work_category"
+                    value={data.work_category}
+                    onChange={handleUpdateChange}
+                  />
                   <TextArea
                     label="Deskripsi Singkat"
                     placeholder="Tuliskan Deskripsi singkat"
@@ -349,7 +361,7 @@ export default function EditProfileWorkers() {
                       label="Posisi"
                       placeholder="Web Developer"
                       name="job_position"
-                      value={experince.job_position}
+                      value={experience.job_position}
                       onChange={handleExperienceChange}
                     />
                   </div>
@@ -360,7 +372,7 @@ export default function EditProfileWorkers() {
                         label="Nama Perusahaan"
                         placeholder="PT Harus Bisa"
                         name="company_name"
-                        value={experince.company_name}
+                        value={experience.company_name}
                         onChange={handleExperienceChange}
                       />
                     </div>
@@ -370,7 +382,7 @@ export default function EditProfileWorkers() {
                         label="Bulan / Tahun"
                         placeholder="Januari / 2018"
                         name="duration_employement"
-                        value={experince.duration_employement}
+                        value={experience.duration_employement}
                         onChange={handleExperienceChange}
                       />
                     </div>
@@ -380,7 +392,7 @@ export default function EditProfileWorkers() {
                       label="Deskripsi Singkat"
                       placeholder="Deskripsi singkat pekerjaan anda"
                       name="experience_desc"
-                      value={experince.experience_desc}
+                      value={experience.experience_desc}
                       onChange={handleExperienceChange}
                     />
                   </div>

@@ -41,7 +41,7 @@ export default function Home() {
   const fetchAllWorkers = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_CSR}/workers?page=1`
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers?page=1`
       );
       setWorkers(response.data.result.result.rows);
       setPagination(response.data.result);
@@ -54,7 +54,7 @@ export default function Home() {
   const fetchWorkers = async (query, sortOption, page) => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_CSR}/workers?search=${query}&sort=${sortOption}&page=${page}`
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers?search=${query}&sort=${sortOption}&page=${page}`
       );
       setWorkers(response.data.result.result.rows);
       setPagination(response.data.result);

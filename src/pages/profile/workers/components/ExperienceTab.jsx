@@ -16,7 +16,7 @@ const ExperienceTab = () => {
     const getExperience = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/experience/workers/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/experience/workers/${workers_id}`
         );
         setExperience(response.data.data.rows);
       } catch (error) {
@@ -33,7 +33,7 @@ const ExperienceTab = () => {
             className={`${Styles.logo} col-span-2 flex items-center justify-center`}
           >
             <Image
-              src="https://freelogopng.com/images/all_img/1656181199icon-shopee-png.png"
+              src="/logoBlanja.png"
               alt="perusahaan"
               width={74}
               height={74}

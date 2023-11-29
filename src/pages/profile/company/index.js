@@ -23,7 +23,7 @@ export default function ProfileWorkers() {
     const getRecruiters = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/recruiters/${recruiters_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/${recruiters_id}`
         );
         setRecruitersProfile(response.data.data.rows[0]);
         console.log(response.data.data.rows[0]);
@@ -63,7 +63,7 @@ export default function ProfileWorkers() {
               alt="Profile Company"
               width={150}
               height={150}
-              style={{ borderRadius: "50%" }}
+              style={{ width: "150px", height: "150px", objectFit:"cover", borderRadius: "50%" }}
             />
           </div>
           <div

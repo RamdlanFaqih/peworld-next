@@ -23,11 +23,11 @@ export async function getServerSideProps({ query }) {
 
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_CSR}/workers/skill/${workers_id}`
+      `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers/skill/${workers_id}`
     );
     const workersProfile = response.data.rows[0];
     const skill = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_CSR}/skill/workers/${workers_id}`
+      `${process.env.NEXT_PUBLIC_API_EXPRESS}/skill/workers/${workers_id}`
     );
     const skillProfile = skill.data.data;
 

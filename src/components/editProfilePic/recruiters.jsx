@@ -64,7 +64,7 @@ export default function EditProfiePicRecruiters({ onClose }) {
   
     try {
       const response = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_CSR}/recruiters/update/image_profile/${recruiters_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/update/image_profile/${recruiters_id}`,
         formData,
         {
           headers: {

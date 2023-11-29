@@ -34,7 +34,7 @@ export default function EditProfileCompany() {
     const getRecruiters = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/recruiters/${recruiters_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/${recruiters_id}`
         );
         setRecruitersProfile(response.data.data.rows[0]);
         console.log(response.data.data.rows[0]);
@@ -58,7 +58,7 @@ export default function EditProfileCompany() {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_CSR}/recruiters/update/profile/${recruiters_id}`,
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/update/profile/${recruiters_id}`,
         data
       );
       console.log(response.data);

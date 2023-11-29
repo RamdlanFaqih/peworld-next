@@ -4,14 +4,14 @@ import axios from "axios";
 import React from "react";
 import Styles from "../auth.module.css";
 import Button from "@/components/button/button";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Login() {
-  const router = useRouter()
+  const router = useRouter();
   const [recruiters, setRecruiters] = React.useState({
     email: "",
     password: "",
@@ -21,6 +21,7 @@ export default function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setRecruiters({ ...recruiters, [name]: value });
   };
 
@@ -39,19 +40,13 @@ export default function Login() {
         recruiters
       );
       console.log("Login successful", response.data);
-      Cookies.set(
-        "token",
-        JSON.stringify(response.data.generateToken)
-      );
-      Cookies.set(
-        "recruiters_id",
-        JSON.stringify(response.data.recruiters_id)
-      );
+      Cookies.set("token", JSON.stringify(response.data.generateToken));
+      Cookies.set("recruiters_id", JSON.stringify(response.data.recruiters_id));
       Cookies.set("role", JSON.stringify(response.data.role));
       setShowSuccesAlert(true);
       setTimeout(() => {
         setShowSuccesAlert(false);
-        router.push("/")
+        router.push("/");
       }, 3000);
     } catch (error) {
       console.log("Error", error);
@@ -87,8 +82,7 @@ export default function Login() {
               <div className={Styles.greetings}>
                 <h1 className={Styles.halo}>Halo, Pewpeople</h1>
                 <p className={Styles.desc}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  euismod ipsum et dui rhoncus auctor.
+                  Untuk melanjutkan, silakan masuk ke akun Anda.
                 </p>
               </div>
               <div className={Styles.inputContainer}>

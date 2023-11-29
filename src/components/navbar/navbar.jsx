@@ -51,11 +51,11 @@ export default function Navbar() {
 
         if (userType === "0") {
           response = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_CSR}/recruiters/${recruiters_id}`
+            `${process.env.NEXT_PUBLIC_API_EXPRESS}/recruiters/${recruiters_id}`
           );
         } else if (userType === "1") {
           response = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_CSR}/workers/${workers_id}`
+            `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers/${workers_id}`
           );
         }
         console.log(response.data.data.rows[0]);

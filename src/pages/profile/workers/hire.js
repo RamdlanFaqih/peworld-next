@@ -24,12 +24,12 @@ export default function Hire() {
     const getWorkers = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/workers/skill/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/workers/skill/${workers_id}`
         );
         setWorkersProfile(response.data.rows[0]);
 
         const skill = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_CSR}/skill/workers/${workers_id}`
+          `${process.env.NEXT_PUBLIC_API_EXPRESS}/skill/workers/${workers_id}`
         );
         setSkillProfile(skill.data.data);
       } catch (error) {
