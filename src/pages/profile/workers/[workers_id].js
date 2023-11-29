@@ -53,7 +53,7 @@ export async function getServerSideProps({ query }) {
   }
 }
 
-export default function profileWorkers({
+export default function ProfileWorkers({
   workersProfile,
   skillProfile,
   workers_id,
