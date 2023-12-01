@@ -41,8 +41,8 @@ export default function Login() {
       );
       console.log("Login successful", response.data);
       Cookies.set("token", JSON.stringify(response.data.generateToken));
-      Cookies.set("recruiters_id", JSON.stringify(response.data.recruiters_id));
-      Cookies.set("role", JSON.stringify(response.data.role));
+      Cookies.set("recruiters_id", JSON.stringify(response.data.recruitersId));
+      Cookies.set("role", JSON.stringify(response.data.recruitersLevel));
       setShowSuccesAlert(true);
       setTimeout(() => {
         setShowSuccesAlert(false);

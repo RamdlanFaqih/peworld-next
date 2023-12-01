@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Button from "../button/button";
 import Image from "next/image";
 import axios from "axios";
-import axiosInstance from "@/config/axiosConfig";
 import Cookies from "js-cookie";
 
 export default function EditProfiePic({ onClose }) {
@@ -75,6 +74,7 @@ export default function EditProfiePic({ onClose }) {
       );
       
       console.log(response);
+      window.location.reload()
       onClose();
     } catch (error) {
       console.error("Cloudinary Upload Error:", error);
