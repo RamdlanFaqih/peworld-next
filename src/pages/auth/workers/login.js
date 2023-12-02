@@ -45,11 +45,11 @@ export default function Login() {
       );
       Cookies.set(
         "workers_id",
-        JSON.stringify(response.data.workersId)
+        JSON.stringify(response.data.workers_id)
       );
       Cookies.set(
         "role",
-        (response.data.workersLevel)
+        (response.data.role)
       )
       setShowSuccessAlert(true);
       setTimeout(() => {

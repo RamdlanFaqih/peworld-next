@@ -15,14 +15,15 @@ export default function NavbarAfterLogin() {
   const router = useRouter()
 
   let profileLink = `/profile/workers/${workers_id}`;
+  let query = { userRole: userType, workers_id };
   if (userType === "0") {
     profileLink = `/profile/company`;
-    
+    query = {};
   }
   const handleProfileClick = () => {
     router.push({
       pathname: profileLink,
-      query: { userRole: userType, workers_id },
+      query,
     });
   };
 

@@ -25,16 +25,25 @@ export default function Navbar() {
   };
 
   let profileLink = `/profile/workers/${workers_id}`;
+  let query = { userRole: userType, workers_id };
+  let historyLink = `/history/workers/${workers_id}`;
   if (userType === "0") {
     profileLink = `/profile/company`;
-    
+    historyLink = `/history/recruiters/${recruiters_id}`
+    query = {};
   }
   const handleProfileClick = () => {
     router.push({
       pathname: profileLink,
-      query: { userRole: userType, workers_id },
+      query,
     });
   };
+
+  const handleHistoryClick = () => {
+    router.push({
+      pathname: historyLink,
+    })
+  }
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -76,7 +85,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="col-start-2 flex items-center justify-end gap-10">
-        <FiBell size={24} color="#9B9B9B" />
+        <FiBell size={24} onClick={handleHistoryClick} color="#9B9B9B" />
         <FiMail size={24} color="#9B9B9B" />
         <div className="position-relative" onClick={toggleDropdown}>
           <Image

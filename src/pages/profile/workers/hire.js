@@ -11,14 +11,25 @@ import { useRouter } from "next/router";
 import { FiMapPin } from "react-icons/fi";
 import Input from "@/components/input/Input";
 import TextArea from "@/components/textArea/TextArea";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Hire() {
   const router = useRouter();
   const { workers_id } = router.query;
+  const recruiters_id = Cookies.get("recruiters_id")
   const [workersProfile, setWorkersProfile] = React.useState("");
   const [skillProfile, setSkillProfile] = React.useState([]);
+  const [hireData, setHireData] = React.useState({
+    purpose: "",
+    email: "",
+    phone_number: "",
+    hire_desc: "",
+    workers_id: workers_id,
+    recruiters_id: recruiters_id,
+  });
 
   React.useEffect(() => {
     const getWorkers = async () => {
@@ -38,6 +49,37 @@ export default function Hire() {
     };
     getWorkers();
   }, []);
+
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setHireData({
+      ...hireData,
+      [name]: value
+    })
+  };
+
+  const handleHire = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_EXPRESS}/hire/insert/${recruiters_id}`,
+        hireData
+      );
+      console.log(response.data);
+      Swal.fire({
+        title: "Sukses!",
+        text: "Berhasil Mengirimkan Pesan Hiring.",
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => {
+        router.push("/")
+      });
+    } catch (error) {
+      console.log(error.message);
+      Swal.fire("Error!", "Terjadi kesalahan saat mengirim pesan hiring.", "error");
+    }
+  }
 
   const profileImage = workersProfile?.workers_image || "/dummyProfile.png";
   const profileName = workersProfile?.workers_name || "Nama Pekerja";
@@ -102,26 +144,33 @@ export default function Hire() {
                   Rekrut {profileName} menjadi bagian dari tim kamu
                 </div>
               </div>
-              <div className={Styles.formHire}>
+              <form onSubmit={handleHire} className={Styles.formHire}>
                 <div>
                   <Input
                     type="text"
                     label="Tujuan Tentang Pesan Ini"
                     placeholder="Project"
+                    name="purpose"
+                    value={hireData.purpose}
+                    onChange={handleChange}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <Input
                     type="text"
                     label="Nama Lengkap"
                     placeholder="Masukan Nama Lengkap"
+                    name=""
                   />
-                </div>
+                </div> */}
                 <div>
                   <Input
                     type="text"
                     label="Email"
                     placeholder="Masukan Email"
+                    name="email"
+                    value={hireData.email}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
@@ -129,6 +178,9 @@ export default function Hire() {
                     type="text"
                     label="No Handphone"
                     placeholder="Masukan No Handphone"
+                    name="phone_number"
+                    value={hireData.phone_number}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
@@ -136,12 +188,15 @@ export default function Hire() {
                     type="text"
                     label="Deskripsi"
                     placeholder="Deskripsikan / Jelaskan lebih detail "
+                    name="hire_desc"
+                    value={hireData.hire_desc}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
-                  <Button style="custom" text="Hire" height="50px" />
+                  <Button type="submit" style="custom" text="Hire" height="50px" />
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
