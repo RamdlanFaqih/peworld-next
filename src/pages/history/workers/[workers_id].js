@@ -4,6 +4,7 @@ import Button from "@/components/button/button";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import axios from "axios";
+import styles from "../styles.module.css"
 
 
 export default function HistoryWorkers() {
@@ -34,8 +35,10 @@ export default function HistoryWorkers() {
           <Navbar />
         </div>
         <div className="bg-slate-200 h-screen">
+          <div className={`${styles.notificationHeader} md:px-10`}>
+            <h1 className={`${styles.notificationHeaderText}`}>Notification</h1>
+          </div>
           <div className="px-10">
-            <h1>Job Alert Workers!</h1>
             {/* {notifications.map((notification) => (
               <div key={notification.id} className="my-4 p-4 bg-white rounded-lg">
                 <div className="flex items-center">

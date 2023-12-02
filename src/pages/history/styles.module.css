@@ -1,0 +1,12 @@
+.notificationHeader{
+    background-color: #5e50a1;
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .notificationHeaderText {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+  }
