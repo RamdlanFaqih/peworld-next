@@ -39,6 +39,7 @@ export default function HistoryWorkers() {
           <div className={`${styles.notificationHeader} md:px-10`}>
             <h1 className={`${styles.notificationHeaderText}`}>Notification</h1>
           </div>
+
           <div className={`${styles.bodyContainer} min-h-screen`}>
             {history.map((item, index) => (
               <div key={index} className="my-4 p-4 bg-white rounded-lg">
@@ -51,8 +52,9 @@ export default function HistoryWorkers() {
                     className="w-10 h-10 rounded-full mr-4 object-cover"
                     />
                     <div>
-                      <h3 className="font-bold">{item.name}</h3>
-                      <p>{item.hire_desc}</p>
+                      <h3 className="font-bold text-lg">{item.name}</h3>
+                      <p className="text-sm">{item.job_position} di {item.company} </p>
+                      <p className="italic">{item.hire_desc}</p>
                     </div>
                 </div>
               </div>
