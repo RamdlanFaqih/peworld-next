@@ -31,7 +31,7 @@ export default function HistoryWorkers() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div>
         <div className="px-10">
           <Navbar />
         </div>
@@ -39,7 +39,7 @@ export default function HistoryWorkers() {
           <div className={`${styles.notificationHeader} md:px-10`}>
             <h1 className={`${styles.notificationHeaderText}`}>Notification</h1>
           </div>
-          <div className={`${styles.bodyContainer}`}>
+          <div className={`${styles.bodyContainer} min-h-screen`}>
             {history.map((item, index) => (
               <div key={index} className="my-4 p-4 bg-white rounded-lg">
                 <div className="flex items-center">
