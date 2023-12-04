@@ -31,7 +31,7 @@ export default function HistoryWorkers() {
 
   return (
     <>
-      <div>
+      <div className="min-h-screen">
         <div className="px-10">
           <Navbar />
         </div>
