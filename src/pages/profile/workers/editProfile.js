@@ -224,276 +224,275 @@ export default function EditProfileWorkers() {
       <div className={`${Styles.navbar} px-10`}>
         <Navbar />
       </div>
-      <div className={`${Styles.bodyContainer}`}>
-        <div className="grid grid-cols-11">
-          <div className="col-span-3 ">
-            <div className="bg-white rounded-lg px-10">
-              <div
-                className={`${Styles.imageContainer}  flex flex-col items-center justify-center`}
-              >
-                <div style={{ width: "150px", height: "150px" }}>
-                  <Image
-                    src={profileImage}
-                    alt="profile picture"
-                    width={150}
-                    height={150}
-                    objectFit="cover"
-                    className={Styles.roundedImage}
-                  />
-                </div>
-                <div
-                  className="flex items-center justify-center"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  <BiSolidPencil />
-                  Edit
-                </div>
+      <div
+        className={`${Styles.bodyContainer} px-4 md:px-10 py-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-4`}
+      >
+        <div className="col-span-1 lg:col-span-4">
+          <div className="bg-white rounded-lg px-10">
+            <div
+              className={`${Styles.imageContainer}  flex flex-col items-center justify-center`}
+            >
+              <div style={{ width: "150px", height: "150px" }}>
+                <Image
+                  src={profileImage}
+                  alt="profile picture"
+                  width={150}
+                  height={150}
+                  objectFit="cover"
+                  className={Styles.roundedImage}
+                />
               </div>
-              <div>
-                <div className={Styles.name}>{profileName}</div>
-                <div className={Styles.job}>{profileProfession}</div>
-                <div className={`${Styles.location} flex items-center`}>
-                  <FiMapPin />
-                  <p className="pl-1">{profileResidence}</p>
-                </div>
-                <div className={Styles.workCategory}>{workCategory}</div>
+              <div
+                className="flex items-center justify-center"
+                onClick={() => setIsModalOpen(true)}
+              >
+                <BiSolidPencil />
+                Edit
               </div>
             </div>
-            <div className="flex flex-col gap-2 mt-4">
-              <Button style="filled" text="Simpan" />
-              <Button style="outline" text="Batal" />
+            <div>
+              <div className={Styles.name}>{profileName}</div>
+              <div className={Styles.job}>{profileProfession}</div>
+              <div className={`${Styles.location} flex items-center`}>
+                <FiMapPin />
+                <p className="pl-1">{profileResidence}</p>
+              </div>
+              <div className={Styles.workCategory}>{workCategory}</div>
             </div>
           </div>
-          <div className="col-start-4 ml-10 col-span-9">
-            <div>
-              <div className="bg-white rounded-lg">
-                <div className="border-b">
-                  <h1 className="px-5 py-5">Data Diri</h1>
-                </div>
-                <form onSubmit={handleSubmit} className="px-5">
+        </div>
+        <div className="col-span-1 col-start-1 lg:col-start-5 lg:col-span-8">
+          <div>
+            <div className="bg-white rounded-lg">
+              <div className="border-b">
+                <h1 className="px-5 py-5">Data Diri</h1>
+              </div>
+              <form onSubmit={handleSubmit} className="px-5">
+                <Input
+                  type="text"
+                  label="Nama Lengkap"
+                  placeholder="Masukan Nama Lengkap"
+                  name="name"
+                  value={data.name}
+                  onChange={handleUpdateChange}
+                />
+                <Input
+                  type="text"
+                  label="Job Desk"
+                  placeholder="Masukan Job Desk"
+                  name="profession"
+                  value={data.profession}
+                  onChange={handleUpdateChange}
+                />
+                <Input
+                  type="text"
+                  label="Domisili"
+                  placeholder="Masukan Domisili"
+                  name="residence"
+                  value={data.residence}
+                  onChange={handleUpdateChange}
+                />
+                <Input
+                  type="text"
+                  label="Tempat Kerja"
+                  placeholder="Masukan tempat kerja"
+                  name="workplace"
+                  value={data.workplace}
+                  onChange={handleUpdateChange}
+                />
+                <Input
+                  type="text"
+                  label="Jenis Kontrak Kerja"
+                  placeholder="Masukan Jenis Kontrak Kerja"
+                  name="work_category"
+                  value={data.work_category}
+                  onChange={handleUpdateChange}
+                />
+                <TextArea
+                  label="Deskripsi Singkat"
+                  placeholder="Tuliskan Deskripsi singkat"
+                  name="workers_desc"
+                  value={data.workers_desc}
+                  onChange={handleUpdateChange}
+                />
+                <Button
+                  style="filled"
+                  text="Simpan"
+                  type="submit"
+                  onClick={handleSubmit}
+                />
+              </form>
+            </div>
+            <div className="bg-white rounded-lg mt-10">
+              <div className="border-b">
+                <h1 className="px-5 py-5">Skill</h1>
+              </div>
+              <div className="px-5">
+                <form
+                  onSubmit={handleSkillSumbit}
+                  className="flex flex-col gap-5"
+                >
                   <Input
                     type="text"
-                    label="Nama Lengkap"
-                    placeholder="Masukan Nama Lengkap"
-                    name="name"
-                    value={data.name}
-                    onChange={handleUpdateChange}
-                  />
-                  <Input
-                    type="text"
-                    label="Job Desk"
-                    placeholder="Masukan Job Desk"
-                    name="profession"
-                    value={data.profession}
-                    onChange={handleUpdateChange}
-                  />
-                  <Input
-                    type="text"
-                    label="Domisili"
-                    placeholder="Masukan Domisili"
-                    name="residence"
-                    value={data.residence}
-                    onChange={handleUpdateChange}
-                  />
-                  <Input
-                    type="text"
-                    label="Tempat Kerja"
-                    placeholder="Masukan tempat kerja"
-                    name="workplace"
-                    value={data.workplace}
-                    onChange={handleUpdateChange}
-                  />
-                   <Input
-                    type="text"
-                    label="Jenis Kontrak Kerja"
-                    placeholder="Masukan Jenis Kontrak Kerja"
-                    name="work_category"
-                    value={data.work_category}
-                    onChange={handleUpdateChange}
-                  />
-                  <TextArea
-                    label="Deskripsi Singkat"
-                    placeholder="Tuliskan Deskripsi singkat"
-                    name="workers_desc"
-                    value={data.workers_desc}
-                    onChange={handleUpdateChange}
+                    placeholder="Masukan Keahlian"
+                    className="w-full md:w-3/4 lg:w-1/2"
+                    height="50px"
+                    name="skill_name"
+                    value={skill.skill_name}
+                    onChange={handleSkillChange}
                   />
                   <Button
-                    style="filled"
-                    text="simpan"
                     type="submit"
-                    onClick={handleSubmit}
+                    text="Simpan"
+                    className="w-full md:w-auto"
                   />
                 </form>
               </div>
-              <div className="bg-white rounded-lg mt-10">
-                <div className="border-b">
-                  <h1 className="px-5 py-5">Skill</h1>
+            </div>
+
+            <div className="bg-white rounded-lg mt-10">
+              <div className="border-b">
+                <h1 className="px-5 py-5">Pengalaman Kerja</h1>
+              </div>
+              <form onSubmit={handleExperienceSubmit}>
+                <div className="px-5">
+                  <Input
+                    type="text"
+                    label="Posisi"
+                    placeholder="Web Developer"
+                    name="job_position"
+                    value={experience.job_position}
+                    onChange={handleExperienceChange}
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-5 px-5">
+                  <div>
+                    <Input
+                      type="text"
+                      label="Nama Perusahaan"
+                      placeholder="PT Harus Bisa"
+                      name="company_name"
+                      value={experience.company_name}
+                      onChange={handleExperienceChange}
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      label="Bulan / Tahun"
+                      placeholder="Januari / 2018"
+                      name="duration_employement"
+                      value={experience.duration_employement}
+                      onChange={handleExperienceChange}
+                    />
+                  </div>
                 </div>
                 <div className="px-5">
-                  <form onSubmit={handleSkillSumbit} className="flex gap-5">
-                    <Input
-                      type="text"
-                      placeholder="Masukan Keahlian"
-                      width="720px"
-                      height="50px"
-                      name="skill_name"
-                      value={skill.skill_name}
-                      onChange={handleSkillChange}
-                    />
-                    <Button
-                      type="submit"
-                      text="simpan"
-                      width="80px"
-                      height="50px"
-                    />
-                  </form>
+                  <TextArea
+                    label="Deskripsi Singkat"
+                    placeholder="Deskripsi singkat pekerjaan anda"
+                    name="experience_desc"
+                    value={experience.experience_desc}
+                    onChange={handleExperienceChange}
+                  />
                 </div>
+                <div className="h-10 px-5 mt-10 ">
+                  <Button type="submit" text="Tambah Pengalaman Kerja" />
+                </div>
+              </form>
+            </div>
+            <div className="bg-white rounded-lg my-5">
+              <div className="border-b">
+                <h1 className="px-5 py-5 mt-10">Portofolio</h1>
               </div>
-              <div className="bg-white rounded-lg mt-10">
-                <div className="border-b">
-                  <h1 className="px-5 py-5">Pengalaman Kerja</h1>
+              <form onSubmit={handlePortofolioSubmit} className="px-5  py-6">
+                <div>
+                  <Input
+                    type="text"
+                    label="Nama Aplikasi"
+                    placeholder="Masukan Nama Aplikasi"
+                    name="app_name"
+                    value={portofolio.app_name}
+                    onChange={handlePortofolioChange}
+                  />
                 </div>
-                <form onSubmit={handleExperienceSubmit}>
-                  <div className="px-5">
-                    <Input
-                      type="text"
-                      label="Posisi"
-                      placeholder="Web Developer"
-                      name="job_position"
-                      value={experience.job_position}
-                      onChange={handleExperienceChange}
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-5 px-5">
-                    <div>
-                      <Input
-                        type="text"
-                        label="Nama Perusahaan"
-                        placeholder="PT Harus Bisa"
-                        name="company_name"
-                        value={experience.company_name}
-                        onChange={handleExperienceChange}
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="text"
-                        label="Bulan / Tahun"
-                        placeholder="Januari / 2018"
-                        name="duration_employement"
-                        value={experience.duration_employement}
-                        onChange={handleExperienceChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="px-5">
-                    <TextArea
-                      label="Deskripsi Singkat"
-                      placeholder="Deskripsi singkat pekerjaan anda"
-                      name="experience_desc"
-                      value={experience.experience_desc}
-                      onChange={handleExperienceChange}
-                    />
-                  </div>
-                  <div className="h-10 px-5 mt-10 ">
-                    <Button type="submit" text="Tambah Pengalaman Kerja" />
-                  </div>
-                </form>
-              </div>
-              <div className="bg-white rounded-lg my-5">
-                <div className="border-b">
-                  <h1 className="px-5 py-5 mt-10">Portofolio</h1>
+                <div>
+                  <Input
+                    type="text"
+                    label="Link Repository"
+                    placeholder="Masukan Link Repository"
+                    name="repository"
+                    value={portofolio.repository}
+                    onChange={handlePortofolioChange}
+                  />
                 </div>
-                <form onSubmit={handlePortofolioSubmit} className="px-5  py-6">
-                  <div>
-                    <Input
-                      type="text"
-                      label="Nama Aplikasi"
-                      placeholder="Masukan Nama Aplikasi"
-                      name="app_name"
-                      value={portofolio.app_name}
+                <div className="flex items-center space-x-4">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      className="text-indigo-600"
+                      name="app_type"
+                      value="web"
+                      checked={portofolio.app_type === "web"}
                       onChange={handlePortofolioChange}
                     />
-                  </div>
-                  <div>
-                    <Input
-                      type="text"
-                      label="Link Repository"
-                      placeholder="Masukan Link Repository"
-                      name="repository"
-                      value={portofolio.repository}
+                    <span className="ml-2">Aplikasi Web</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      className="form-radio text-indigo-600"
+                      name="app_type"
+                      value="mobile"
+                      checked={portofolio.app_type === "mobile"}
                       onChange={handlePortofolioChange}
                     />
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        className="text-indigo-600"
-                        name="app_type"
-                        value="web"
-                        checked={portofolio.app_type === "web"}
-                        onChange={handlePortofolioChange}
+                    <span className="ml-2">Aplikasi Mobile</span>
+                  </label>
+                </div>
+                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                  <div className="text-center">
+                    <svg
+                      className="mx-auto h-12 w-12 text-gray-300"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                        clipRule="evenodd"
                       />
-                      <span className="ml-2">Aplikasi Web</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        className="form-radio text-indigo-600"
-                        name="app_type"
-                        value="mobile"
-                        checked={portofolio.app_type === "mobile"}
-                        onChange={handlePortofolioChange}
-                      />
-                      <span className="ml-2">Aplikasi Mobile</span>
-                    </label>
-                  </div>
-                  <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                    <div className="text-center">
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-300"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
+                    </svg>
+                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                      <label
+                        htmlFor="file-upload"
+                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                          clipRule="evenodd"
+                        <span>Upload a file</span>
+                        <input
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          className="sr-only"
+                          onChange={handleAppImage}
                         />
-                      </svg>
-                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                        <label
-                          htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                        >
-                          <span>Upload a file</span>
-                          <input
-                            id="file-upload"
-                            name="file-upload"
-                            type="file"
-                            className="sr-only"
-                            onChange={handleAppImage}
-                          />
-                        </label>
-                        <p className="pl-1">or drag and drop</p>
-                      </div>
-                      <p className="text-xs leading-5 text-gray-600">
-                        PNG, JPG, & JPEG Max. 5 mb
-                      </p>
+                      </label>
+                      <p className="pl-1">or drag and drop</p>
                     </div>
+                    <p className="text-xs leading-5 text-gray-600">
+                      PNG, JPG, & JPEG Max. 5 mb
+                    </p>
                   </div>
-                  <div className="h-10  mt-10 ">
-                    <Button
-                      type="submit"
-                      style="outline"
-                      text="Tambah Portofolio"
-                    />
-                  </div>
-                </form>
-              </div>
+                </div>
+                <div className="h-10  mt-10 ">
+                  <Button
+                    type="submit"
+                    style="outline"
+                    text="Tambah Portofolio"
+                  />
+                </div>
+              </form>
             </div>
           </div>
         </div>

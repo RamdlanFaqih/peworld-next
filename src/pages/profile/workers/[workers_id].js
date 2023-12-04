@@ -86,14 +86,14 @@ export default function ProfileWorkers({
         <Navbar />
       </div>
       <div
-        className={`${Styles.bodyContainer} grid grid-cols-1 lg:grid-cols-11 gap-10 p-5 lg:p-0`}
+        className={`${Styles.bodyContainer} grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-10 p-5 lg:p-0`}
       >
-        <div className="col-span-3 mb-10">
+        <div className="profile sm:col-span-1 md:col-span-4 lg:col-span:3 mb-10">
           <div className="bg-white rounded-lg">
             <div
-              className={`${Styles.imageContainer} row-start-1 flex justify-center`}
+              className={`${Styles.imageContainer} row-start-1 flex justify-center `}
             >
-              <div style={{ width: "150px", height: "150px" }}>
+              <div className="w-full h-auto flex items-center justify-center">
                 <Image
                   src={profileImage}
                   alt="profile picture"
@@ -139,7 +139,7 @@ export default function ProfileWorkers({
 
               <div className="mt-5">
                 <div>Skill</div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                   {skillProfile.map((item, index) => (
                     <Skill key={index} name={item.skill_name} />
                   ))}
@@ -160,7 +160,7 @@ export default function ProfileWorkers({
             </div>
           </div>
         </div>
-        <div className="col-span-3 lg:col-start-4 lg:ml-10 lg:col-span-8">
+        <div className="lg:col-start-5 lg:col-span-8 lg:ml-10">
           <Tabs.Group
             aria-label="Tabs with underline"
             style="underline"

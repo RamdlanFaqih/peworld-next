@@ -68,9 +68,9 @@ export default function Login() {
 
   return (
     <div className={`bg-gray-100 min-h-screen ${Styles.background}`}>
-      <div className={`container ${Styles.container}`}>
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${Styles.content}`}>
-          <div className={`${Styles.imageContainer} relative`}>
+      <div className={`container mx-auto ${Styles.container}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ${Styles.content}`}>
+          <div className={`${Styles.imageContainer} relative md:w-3/5 lg:w-2/3 xl:w-1/2`}>
             <div className={`${Styles.overlay}`}></div>
             <div className={`${Styles.logo} absolute z-10`}>
               <Image

@@ -12,7 +12,7 @@ export default function NavbarAfterLogin() {
   const userType = Cookies.get("role"); //
   const workers_id = Cookies.get("workers_id");
   const recruiters_id = Cookies.get("recruiters_id");
-  const router = useRouter()
+  const router = useRouter();
 
   let profileLink = `/profile/workers/${workers_id}`;
   let query = { userRole: userType, workers_id };
@@ -39,15 +39,22 @@ export default function NavbarAfterLogin() {
             width={127}
             height={35}
             layout="fixed"
-            style={{width: "127px", height:"35px"}}
+            style={{ width: "127px", height: "35px" }}
           />
         </Link>
       </div>
-      <div className="hidden md:flex">
-        <Link href="/home">Home</Link>
-      </div>
-      <div className="col-start-5 text-end">
-          <Button type="filled" text="Profile" width="100px" onClick={handleProfileClick} />
+      <div className="col-start-5 text-end flex flex-row">
+        <div className="hidden md:flex px-10">
+          <Link href="/home">Home</Link>
+        </div>
+        <div>
+          <Button
+            type="filled"
+            text="Profile"
+            width="100px"
+            onClick={handleProfileClick}
+          />
+        </div>
       </div>
     </div>
   );

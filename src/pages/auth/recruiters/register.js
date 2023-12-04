@@ -74,10 +74,10 @@ export default function Register() {
     }
   };
   return (
-    <div className="">
-      <div className={Styles.container}>
-        <div className={`${Styles.content} grid grid-cols-2`}>
-          <div className={`${Styles.imageContainer} relative`}>
+    <div className={`min-h-screen`}>
+      <div className={`${Styles.container} mx-auto`}>
+        <div className={`${Styles.content} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10`}>
+          <div className={`${Styles.imageContainer} relative md:w-3/5 lg:w-2/3 xl:w-1/2`}>
             <div className={`${Styles.overlay}`}></div>
             <div className={`${Styles.logo} absolute z-10`}>
               <Image

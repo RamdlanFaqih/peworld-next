@@ -71,10 +71,10 @@ export default function Register() {
   };
 
   return (
-    <div className="">
-      <div className={Styles.container}>
-        <div className={`${Styles.content} grid grid-cols-2`}>
-          <div className={`${Styles.imageContainer} relative`}>
+    <div className="min-h-screen">
+      <div className={`container mx-auto ${Styles.container}`}>
+        <div className={`${Styles.content} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10`}>
+          <div className={`${Styles.imageContainer} relative md:w-3/5 lg:w-2/3 xl:w-1/2`}>
             <div className={`${Styles.overlay}`}></div>
             <div className={`${Styles.logo} absolute z-10`}>
               <Image
@@ -91,7 +91,7 @@ export default function Register() {
           </div>
 
           <div>
-            <div className={Styles.loginContainer}>
+            <div className={`${Styles.loginContainer}`}>
               <div className={Styles.greetings}>
                 <h1 className={Styles.halo}>Halo, Pewpeople</h1>
                 <p className={Styles.desc}>

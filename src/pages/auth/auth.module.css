@@ -33,12 +33,12 @@
 
 .container {
   max-width: 100%;
-  box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+  box-sizing: border-box;
 }
 
 
 .imageContainer {
-  width: 650px;
+  width: 100%;
   height: 100vh;
 }
 
