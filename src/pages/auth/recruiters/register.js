@@ -159,6 +159,7 @@ export default function Register() {
                   <input
                     className="border py-1 px-2 rounded-md"
                     placeholder="Konfirmasi Kata Sandi"
+                    type="password"
                     name="confirmPassword"
                     value={recruitersData.confirmPassword}
                     onChange={handleChange}
