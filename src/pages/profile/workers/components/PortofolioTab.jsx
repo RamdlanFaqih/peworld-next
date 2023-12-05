@@ -6,12 +6,14 @@ import React from "react";
 import Cookies from "js-cookie";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { TailSpin } from "react-loader-spinner";
 
 
 const PortofolioTabs = () => {
   const router = useRouter();
   const [portofolio, setPortofolio] = React.useState([]);
   const workers_id = router.query.workers_id;
+  const [isLoading, setIsLoading] = React.useState(true)
   console.log(workers_id);
 
   React.useEffect(() => {
@@ -21,9 +23,11 @@ const PortofolioTabs = () => {
           `${process.env.NEXT_PUBLIC_API_EXPRESS}/portofolio/workers/${workers_id}`
         );
         setPortofolio(response.data.data.rows);
+        setIsLoading(false)
         console.log("ini portofolio", response.data.data.rows);
       } catch (error) {
         console.log("get experience failed", error);
+        setIsLoading(false)
       }
     };
     getPortofolio();
@@ -49,7 +53,21 @@ const PortofolioTabs = () => {
   }
   return (
     <>
-      {portofolio.map((item, index) => (
+    {isLoading ? (
+      <div className="flex justify-center">
+      <TailSpin
+        height={80}
+        width={80}
+        color="#5e50a1"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
+    ): (
+      portofolio.map((item, index) => (
         <div key={index} className="flex flex-col items-center relative">
           <Image
             src={item.image}
@@ -64,7 +82,9 @@ const PortofolioTabs = () => {
             <FaTrash />
           </span>
         </div>
-      ))}
+      ))
+    )}
+     
     </>
   );
 };

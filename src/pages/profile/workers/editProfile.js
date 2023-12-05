@@ -11,6 +11,7 @@ import Input from "@/components/input/Input";
 import TextArea from "@/components/textArea/TextArea";
 import axios from "axios";
 import React from "react";
+import { TailSpin } from "react-loader-spinner";
 import EditProfiePic from "@/components/editProfilePic/editProfilePic";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
@@ -47,8 +48,7 @@ export default function EditProfileWorkers() {
   });
 
   const [appImage, setAppImage] = React.useState("");
-  const [showSuccessAlert, setShowSuccessAlert] = React.useState(false);
-  const [showErrorAlert, setShowErrorAlert] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true)
   const workers_id = Cookies.get("workers_id");
   const userType = Cookies.get("role");
   console.log(userType);
@@ -64,6 +64,7 @@ export default function EditProfileWorkers() {
         );
         setWorkersProfile(response.data.data.rows[0]);
         setUserRole(response.data.data.rows[0].role);
+        setIsLoading(false)
         console.log(response.data.data.rows[0]);
       } catch (error) {
         console.log("get workers failed", error);
@@ -224,11 +225,25 @@ export default function EditProfileWorkers() {
       <div className={`${Styles.navbar} px-10`}>
         <Navbar />
       </div>
-      <div
+      {isLoading ? (
+      <div className="flex justify-center items-center h-screen">
+      <TailSpin
+        height={80}
+        width={80}
+        color="#5e50a1"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
+      ) : (
+        <div
         className={`${Styles.bodyContainer} px-4 md:px-10 py-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-4`}
       >
         <div className="col-span-1 lg:col-span-4">
-          <div className="bg-white rounded-lg px-10">
+          <div className="bg-white rounded-lg px-10 pb-10">
             <div
               className={`${Styles.imageContainer}  flex flex-col items-center justify-center`}
             >
@@ -259,6 +274,9 @@ export default function EditProfileWorkers() {
               </div>
               <div className={Styles.workCategory}>{workCategory}</div>
             </div>
+          </div>
+          <div className="mt-5 hidden sm:hidden lg:flex">
+            <Button style="outline" text="Kembali" onClick={() => router.back()} />
           </div>
         </div>
         <div className="col-span-1 col-start-1 lg:col-start-5 lg:col-span-8">
@@ -497,6 +515,8 @@ export default function EditProfileWorkers() {
           </div>
         </div>
       </div>
+      )}
+     
       {isModalOpen && <EditProfiePic onClose={() => setIsModalOpen(false)} />}
       <div className="footer">
         <Footer />

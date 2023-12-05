@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { TailSpin } from "react-loader-spinner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function ProfileWorkers() {
   const [recruitersProfile, setRecruitersProfile] = React.useState("");
   const [userRole, setUserRole] = React.useState("");
   const recruiters_id = Cookies.get("recruiters_id");
+  const [isLoading, setIsLoading] = React.useState(true);
   console.log(recruiters_id);
 
   React.useEffect(() => {
@@ -28,6 +30,7 @@ export default function ProfileWorkers() {
         setRecruitersProfile(response.data.data.rows[0]);
         console.log(response.data.data.rows[0]);
         setUserRole(response.data.data.rows[0].recruiters_role);
+        setIsLoading(false);
       } catch (error) {
         console.log("get recruiters failed", error);
       }
@@ -56,39 +59,61 @@ export default function ProfileWorkers() {
         <Navbar />
       </div>
       <div className={Styles.bodyContainer}>
-        <div className="bg-white h-50 rounded-lg">
-          <div className={`${Styles.displayPicture} pt-10 flex justify-center`}>
-            <Image
-              src={profileImage}
-              alt="Profile Company"
-              width={150}
-              height={150}
-              style={{ width: "150px", height: "150px", objectFit:"cover", borderRadius: "50%" }}
+        {isLoading ? (
+          <div className="flex justify-center h-screen">
+            <TailSpin
+              height={80}
+              width={80}
+              color="#5e50a1"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
             />
           </div>
-          <div
-            className={` ${Styles.profileData} flex flex-col items-center text-center justify-center`}
-          >
-            <div className={Styles.company}>{profileName}</div>
-            <div className={Styles.field}>{profileField}</div>
-            <div className={Styles.residence}>{profileCity}</div>
-            <div className={Styles.description}>{profileDesc}</div>
-            <div className={Styles.buttonEditProfile}>
-              <Button
-                style="filled"
-                height="50px"
-                text="Edit Profile"
-                onClick={handleEditProfile}
+        ) : (
+          <div className="bg-white h-50 rounded-lg">
+            <div
+              className={`${Styles.displayPicture} pt-10 flex justify-center`}
+            >
+              <Image
+                src={profileImage}
+                alt="Profile Company"
+                width={150}
+                height={150}
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
               />
             </div>
-            <div className="px-5 py-5">
-              <div className={Styles.gmail}>{profileEmail}</div>
-              {/* <div className={Styles.instagram}>@Louist91</div> */}
-              <div className={Styles.github}>{profilePhoneNumber}</div>
-              <div className={Styles.gitlab}>{profileLinkedin}</div>
+            <div
+              className={` ${Styles.profileData} flex flex-col items-center text-center justify-center`}
+            >
+              <div className={Styles.company}>{profileName}</div>
+              <div className={Styles.field}>{profileField}</div>
+              <div className={Styles.residence}>{profileCity}</div>
+              <div className={Styles.description}>{profileDesc}</div>
+              <div className={Styles.buttonEditProfile}>
+                <Button
+                  style="filled"
+                  height="50px"
+                  text="Edit Profile"
+                  onClick={handleEditProfile}
+                />
+              </div>
+              <div className="px-5 py-5">
+                <div className={Styles.gmail}>{profileEmail}</div>
+                {/* <div className={Styles.instagram}>@Louist91</div> */}
+                <div className={Styles.github}>{profilePhoneNumber}</div>
+                <div className={Styles.gitlab}>{profileLinkedin}</div>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="footer">
         <Footer />
