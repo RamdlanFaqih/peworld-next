@@ -42,6 +42,12 @@ Peworld is a HireJob website aimed at connection job seekers and recruiters. You
 </details>
 <details>
   <summary>
+    Home Page
+  </summary>
+<img src="screenshots/Home.png" alt="Home" />
+</details>
+<details>
+  <summary>
     Profile Workers
   </summary>
 <img src="screenshots/ProfilePortofolio.png" alt="Profile Workers" />
@@ -52,7 +58,30 @@ Peworld is a HireJob website aimed at connection job seekers and recruiters. You
   </summary>
 <img src="screenshots/EditProfileWorkers.png" alt="Edit Profile" />
 </details>
-
+<details>
+  <summary>
+    Profile Reccruiters
+  </summary>
+<img src="screenshots/RecruitersProfile.png" alt="Edit Profile" />
+</details>
+<details>
+  <summary>
+    Edit Profile Recruiters
+  </summary>
+<img src="screenshots/EditProfileRecruiters.png" alt="Edit Profile" />
+</details>
+<details>
+  <summary>
+    Hire Page
+  </summary>
+<img src="screenshots/Hire.png" alt="Edit Profile" />
+</details>
+<details>
+  <summary>
+    Notifications
+  </summary>
+<img src="screenshots/notification.png" alt="Edit Profile" />
+</details>
 ## Built With
 - [Next.js](https://nextjs.org/)
 
